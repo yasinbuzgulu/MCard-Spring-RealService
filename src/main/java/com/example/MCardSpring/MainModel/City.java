@@ -20,6 +20,10 @@ public class City {
         this.cityName = cityName;
     }
 
+    public City() {
+
+    }
+
     public String getCityName() {
         return cityName;
     }

@@ -1,13 +1,11 @@
 package com.example.MCardSpring.MainModel;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
 public class Opportunity {
     @Id
-    @Column(name = "id", nullable = false)
     private Long id;
 
     /**
@@ -30,6 +28,10 @@ public class Opportunity {
         this.name = name;
         this.perYearPrice = perYearPrice;
         this.topLimitYearValue = topLimitYearValue;
+    }
+
+    public Opportunity() {
+
     }
 
     public String getName() {

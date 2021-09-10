@@ -10,7 +10,7 @@ public class Card {
      */
     @Id
     @GeneratedValue
-    private Long cardIdentity;
+    private Long id;
 
     /**
      * Kart kaydında kart fiyatı
@@ -48,4 +48,70 @@ public class Card {
     public Card() {
     }
 
+    public Card(Long id, int price, String expiryDate, Applicant applicant, CityOpportunity city,
+                List<CityOpportunity> cardOpportunities, String cardOpportunityYear) {
+        this.id = id;
+        this.price = price;
+        this.expiryDate = expiryDate;
+        this.applicant = applicant;
+        this.city = city;
+        this.cardOpportunities = cardOpportunities;
+        this.cardOpportunityYear = cardOpportunityYear;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public String getExpiryDate() {
+        return expiryDate;
+    }
+
+    public void setExpiryDate(String expiryDate) {
+        this.expiryDate = expiryDate;
+    }
+
+    public Applicant getApplicant() {
+        return applicant;
+    }
+
+    public void setApplicant(Applicant applicant) {
+        this.applicant = applicant;
+    }
+
+    public CityOpportunity getCity() {
+        return city;
+    }
+
+    public void setCity(CityOpportunity city) {
+        this.city = city;
+    }
+
+    public List<CityOpportunity> getCardOpportunities() {
+        return cardOpportunities;
+    }
+
+    public void setCardOpportunities(List<CityOpportunity> cardOpportunities) {
+        this.cardOpportunities = cardOpportunities;
+    }
+
+    public String getCardOpportunityYear() {
+        return cardOpportunityYear;
+    }
+
+    public void setCardOpportunityYear(String cardOpportunityYear) {
+        this.cardOpportunityYear = cardOpportunityYear;
+    }
 }
