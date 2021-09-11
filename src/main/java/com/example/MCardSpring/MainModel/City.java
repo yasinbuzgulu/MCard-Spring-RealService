@@ -25,7 +25,6 @@ public class City {
     }
 
     public City() {
-
     }
 
     public String getCityName() {

@@ -63,9 +63,6 @@ public class Card {
         this.cardOpportunityYear = cardOpportunityYear;
     }
 
-    public Card(long l, Optional<Applicant> byId, Optional<CityOpportunity> byId1) {
-    }
-
     public Long getId() {
         return id;
     }

@@ -29,20 +29,12 @@ public class LoadDatabase {
             log.info("Preloading " + applicantRepository.save(new Applicant("Fuat", "Başgil",
                     "01/12/1893", 14513286998L, "Yaşlı",
                     "Sivil", 2L)));
-
             log.info("Preloading " + cityRepository.save((new City(1L, "İstanbul"))));
-
-            log.info(("Preloading " + opportunityRepository.save(new Opportunity(1L, "Otopark",
-                    200, 5))));
-
-            log.info("Preloading" + cityOpportunityRepository.save(new CityOpportunity(1L
-                            ,cityRepository.findCityById(1L)),
-                    opportunityRepository.findOpportunityById(1L)));
-
-            log.info("Preloading" + cardRepository.save(new Card(1L , applicantRepository.findById(1L),
-                    cityOpportunityRepository.findById(1L))));
+            log.info(("Preloading " + opportunityRepository.save(new Opportunity(1L, "Otopark", 200, 5))));
+            log.info("Preloading" + cityOpportunityRepository.save(new CityOpportunity(1L ,cityRepository.findById(1L),
+                    opportunityRepository.findById(1L)));
+            log.info("Preloading" + cardRepository.save(new Card(1L , applicantRepository.findById(1L), cityOpportunityRepository.findById(1L)));
         };
     }
-
 
 }

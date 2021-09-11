@@ -35,13 +35,6 @@ public class CityOpportunity {
         this.opportunity = opportunity;
     }
 
-    public CityOpportunity(Optional<City> cityById) {
-
-    }
-
-    public CityOpportunity(long l, Optional<City> cityById) {
-    }
-
     public City getCity() {
         return city;
     }

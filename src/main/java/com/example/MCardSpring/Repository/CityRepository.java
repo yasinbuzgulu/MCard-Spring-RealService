@@ -11,6 +11,4 @@ import java.util.Optional;
  * Şehir bilgilerinin tutulduğu repository
  */
 @Repository
-public interface CityRepository extends JpaRepository<City, Long > {
-    Optional<City> findCityById(Long id);
-}
+public interface CityRepository extends JpaRepository<City, Long > { }

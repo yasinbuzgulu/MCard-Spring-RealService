@@ -14,8 +14,8 @@ import java.util.Optional;
 @Repository
 public
 interface CityOpportunityRepository extends JpaRepository<CityOpportunity, Long> {
-    List<CityOpportunity> findAllByCityName(CityOpportunity cityName);
+    List<CityOpportunity> findAllByCity_CityName(String cityName);
 
-    String save(CityOpportunity cityOpportunity, Optional<Opportunity> opportunityById);
+//    String save(CityOpportunity cityOpportunity, Optional<Opportunity> opportunityById);
 }
 
