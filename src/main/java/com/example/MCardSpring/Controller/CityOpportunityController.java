@@ -1,61 +1,80 @@
 package com.example.MCardSpring.Controller;
 
-import com.example.MCardSpring.MainModel.Card;
 import com.example.MCardSpring.MainModel.CityOpportunity;
 import com.example.MCardSpring.Service.CityOpportunityService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.hateoas.CollectionModel;
-import org.springframework.hateoas.EntityModel;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
-
+/**
+ * Şehir-olanak kontrolleri yapılır (CRUD işlemleri )
+ */
 @RestController
 public class CityOpportunityController {
-
-    private final CityOpportunityService cityOpportunityService;
-
+    /**
+     * Controller içinde kullanılacak cityOpportunity serivisi instance oluşturmadan constructor ile çağrılır
+     */
+    CityOpportunityService cityOpportunityService;
     public CityOpportunityController(CityOpportunityService cityOpportunityService) {
         this.cityOpportunityService = cityOpportunityService;
     }
-    
+
+    /**
+     * GET ile tüm şehir-olanaklar çağırılır
+     * @return: tüm şehir-olanakları döner
+     */
     @GetMapping("/cityOpportunities")
-    public CollectionModel<EntityModel<CityOpportunity>> listTheCityOpportunities() {
-        List<EntityModel<CityOpportunity>> cityOpportunities = cityOpportunityService.listTheCityOpportunities();
-        return CollectionModel.of(cityOpportunities, linkTo(methodOn(CityOpportunityController.class)
-                .listTheCityOpportunities()).withSelfRel());
+    public ResponseEntity<List<CityOpportunity>> listTheCityOpportunities() {
+        List<CityOpportunity> cityOpportunities = cityOpportunityService.listTheCityOpportunities();
+        return ResponseEntity.ok().body(cityOpportunities);
     }
 
+    /**
+     * GET request i URI da id ile kullanılır ve sadece bir şehir-olanak çağırılır
+     * @param id: çağırılan şehir-olanak kaydının id si
+     * @return: id sine sahip şehir-olanak kaydını döner (status 200 ve "OK" ile)
+     */
     @GetMapping("/cityOpportunities/{id}")
-    public EntityModel<CityOpportunity> getCityOpportunityById(@PathVariable Long id) {
-        CityOpportunity cityOpportunity = cityOpportunityService.getCityOpportunityById(id);
-
-        return EntityModel.of(cityOpportunity,
-                linkTo(methodOn(CityOpportunityController.class).getCityOpportunityById(id)).withSelfRel(),
-                linkTo(methodOn(CityOpportunityController.class).listTheCityOpportunities()).withRel("cityOpportunities"));
+    public ResponseEntity<CityOpportunity> getCityOpportunityById(@PathVariable Long id) {
+        return new ResponseEntity<>(cityOpportunityService.getCityOpportunityById(id), HttpStatus.OK);
     }
 
+    /**
+     * POST ile yeni bir şehir-olanak kaydı oluşturulur
+     * @param cityOpportunity: oluşturulacak yeni şehir-olanak kaydu
+     * @return: yeni şehir-olanak kayıt edilmiş status u 201 "CREATED" döner
+     */
     @PostMapping("cityOpportunities/")
-    public ResponseEntity<Object> createCityOpportunity (@RequestBody CityOpportunity cityOpportunity) {
-        return cityOpportunityService.createCityOpportunity(cityOpportunity);
+    public ResponseEntity<CityOpportunity> createCityOpportunity(@RequestBody CityOpportunity cityOpportunity) {
+        CityOpportunity cityOpportunity1 = cityOpportunityService.createCityOpportunity(cityOpportunity);
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.add("cityOpportunity", "/cityOpportunities/" + cityOpportunity1.getId().toString());
+        return new ResponseEntity<>(cityOpportunity1, httpHeaders, HttpStatus.CREATED);
     }
 
+    /**
+     * PUT ile,ilgili ID ye sahip şehir-olanak kaydı düzenlenir
+     * @param cityOpportunity: düzenlenecek şehir-olanak kaydı
+     * @param id: düzenlemenin yapılcağı şehir-olanak kaydının id si
+     * @return: güncelenmiş şehir-olanak kaydı döndürülür
+     */
     @PutMapping("/cityOpportunities/{id}")
-    public EntityModel<CityOpportunity> updateCityOpportunity(@RequestBody CityOpportunity newCityOpportunity,
-                                                              @PathVariable Long id) {
-        CityOpportunity cityOpportunity = cityOpportunityService.updateCityOpportunity(newCityOpportunity, id);
-        return EntityModel.of(cityOpportunity,
-                linkTo(methodOn(CityOpportunityController.class).getCityOpportunityById(id)).withSelfRel(),
-                linkTo(methodOn(CityOpportunityController.class).listTheCityOpportunities()).withRel("cityOpportunities"));
+    public ResponseEntity<CityOpportunity> updateCityOpportunity( @RequestBody CityOpportunity cityOpportunity , @PathVariable("id") Long id) {
+        cityOpportunityService.updateCityOpportunity(cityOpportunity, id);
+        return new ResponseEntity<>(cityOpportunityService.getCityOpportunityById(id), HttpStatus.OK);
     }
 
+    /**
+     * DELETE ile, id ye sahip şehir-olanak kaydı silinir
+     * @param id: Silinecek şehir-olanka kaydının id si
+     * @return: status u 204 döner ("No Content")
+     */
     @DeleteMapping("cityOpportunities/{id}")
-    public ResponseEntity<Object> deleteCard (@PathVariable Long id) {
-        return cityOpportunityService.deleteCityOpportunity(id);
+    public ResponseEntity<CityOpportunity> deleteCityOpportunity(@PathVariable("id") Long id) {
+        cityOpportunityService.deleteCityOpportunity(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
 }

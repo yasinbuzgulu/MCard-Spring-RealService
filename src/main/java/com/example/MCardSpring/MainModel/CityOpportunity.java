@@ -2,7 +2,11 @@ package com.example.MCardSpring.MainModel;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Optional;
 
+/**
+ * Şehir-olanak nesnesinin özelliklerini belirten entity
+ */
 @Entity
 public class CityOpportunity {
 
@@ -17,37 +21,33 @@ public class CityOpportunity {
      * Şehir - Olanak kaydında şehrin ismi
      */
     @ManyToOne( targetEntity = City.class)
-    private City cityName;
+    private City city;
 
     /**
-     * Şehir - Olanak kaydında olanağın ismi
+     * Şehir - Olanak kaydında olanağın listesi (ismi - yıllık fiyatı - maxtanımlanma yılı)
      */
     @ManyToMany(targetEntity = Opportunity.class)
     private List<Opportunity> opportunity;
 
-    /**
-     * Şehir - Olanak kaydında olanağın 1 yıl için fiyatı
-     */
-    @ManyToMany(targetEntity = Opportunity.class)
-    private List<Opportunity> perYearPrice;
-
-    /**
-     * Şehir - Olanak kaydında olanağın tanımlanabileceği max yıl
-     */
-    @ManyToMany(targetEntity = Opportunity.class)
-    private List<Opportunity> topLimitYearValue;
-
-    public CityOpportunity(Long id, City cityName, List<Opportunity> opportunity, List<Opportunity> perYearPrice,
-                           List<Opportunity> topLimitYearValue) {
+      public CityOpportunity(Long id, City city, List<Opportunity> opportunity) {
         this.id = id;
-        this.cityName = cityName;
+        this.city = city;
         this.opportunity = opportunity;
-        this.perYearPrice = perYearPrice;
-        this.topLimitYearValue = topLimitYearValue;
     }
 
-    public CityOpportunity() {
+    public CityOpportunity(Optional<City> cityById) {
 
+    }
+
+    public CityOpportunity(long l, Optional<City> cityById) {
+    }
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
     }
 
     public Long getId() {
@@ -58,14 +58,6 @@ public class CityOpportunity {
         this.id = id;
     }
 
-    public City getCityName() {
-        return cityName;
-    }
-
-    public void setCityName(City cityName) {
-        this.cityName = cityName;
-    }
-
     public List<Opportunity> getOpportunity() {
         return opportunity;
     }
@@ -74,30 +66,12 @@ public class CityOpportunity {
         this.opportunity = opportunity;
     }
 
-    public List<Opportunity> getPerYearPrice() {
-        return perYearPrice;
-    }
-
-    public void setPerYearPrice(List<Opportunity> perYearPrice) {
-        this.perYearPrice = perYearPrice;
-    }
-
-    public List<Opportunity> getTopLimitYearValue() {
-        return topLimitYearValue;
-    }
-
-    public void setTopLimitYearValue(List<Opportunity> topLimitYearValue) {
-        this.topLimitYearValue = topLimitYearValue;
-    }
-
-    @Override
+      @Override
     public String toString() {
         return "CityOpportunity{" +
                 "id=" + id +
-                ", cityName=" + cityName +
+                ", city=" + city +
                 ", opportunity=" + opportunity +
-                ", perYearPrice=" + perYearPrice +
-                ", topLimitYearValue=" + topLimitYearValue +
                 '}';
     }
 }

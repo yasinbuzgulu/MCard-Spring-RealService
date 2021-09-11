@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+/**
+ * Kart ta  exception durumu için handling
+ */
 @ControllerAdvice
 public class CardNotFoundAdvice {
     @ResponseBody

@@ -2,7 +2,11 @@ package com.example.MCardSpring.MainModel;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Optional;
 
+/**
+ * Kart nesnesinin özelliklerini belirten entity
+ */
 @Entity
 public class Card {
     /**
@@ -25,7 +29,7 @@ public class Card {
     /**
      * Kart kaydında karta başvuranın
      */
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Applicant applicant;
 
     /**
@@ -57,6 +61,9 @@ public class Card {
         this.city = city;
         this.cardOpportunities = cardOpportunities;
         this.cardOpportunityYear = cardOpportunityYear;
+    }
+
+    public Card(long l, Optional<Applicant> byId, Optional<CityOpportunity> byId1) {
     }
 
     public Long getId() {

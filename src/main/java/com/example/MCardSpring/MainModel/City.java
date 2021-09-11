@@ -1,17 +1,21 @@
 package com.example.MCardSpring.MainModel;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+/**
+ * Şehir nesnesinin özelliklerini belirten entity
+ */
 @Entity
 public class City {
+    /**
+     * Şehir nesnesinin unique id si
+     */
     @Id
-    @Column(name = "id", nullable = false)
-    private Long id;
+    private  Long id;
 
     /**
-     * Şehir - Olanak kaydında şehrin ismi
+     * Şehrin ismi
      */
     private String cityName;
 
