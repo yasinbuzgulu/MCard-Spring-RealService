@@ -71,4 +71,14 @@ public class Opportunity {
     public void setId(Long id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "Opportunity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", perYearPrice=" + perYearPrice +
+                ", topLimitYearValue=" + topLimitYearValue +
+                '}';
+    }
 }

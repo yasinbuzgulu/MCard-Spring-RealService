@@ -36,30 +36,29 @@ public class Card {
      * Kart kaydında kartın tanımlandığı şehir
      */
     @ManyToOne(targetEntity = CityOpportunity.class)
-    private CityOpportunity city;
+    private CityOpportunity cityOpportunity;
 
-    /**
-     * Kart kaydında kartın tanımlandığı şehirlerden seçilen olanaklar
-     */
-    @ManyToMany(targetEntity = CityOpportunity.class)
-    private List<CityOpportunity> cardOpportunities;
+//    /**
+//     * Kart kaydında kartın tanımlandığı şehirlerden seçilen olanaklar
+//     */
+//    @ManyToMany(targetEntity = CityOpportunity.class)
+//    private List<CityOpportunity> cardOpportunities;
 
     /**
      * Kart kaydında seçilen olanakların kaç yıl için tanımlanacağı
      */
-    private String cardOpportunityYear;
+    private int cardOpportunityYear;
 
     public Card() {
     }
 
-    public Card(Long id, int price, String expiryDate, Applicant applicant, CityOpportunity city,
-                List<CityOpportunity> cardOpportunities, String cardOpportunityYear) {
+    public Card(Long id, int price, String expiryDate, Applicant applicant, CityOpportunity cityOpportunity,
+                int cardOpportunityYear) {
         this.id = id;
         this.price = price;
         this.expiryDate = expiryDate;
         this.applicant = applicant;
-        this.city = city;
-        this.cardOpportunities = cardOpportunities;
+        this.cityOpportunity = cityOpportunity;
         this.cardOpportunityYear = cardOpportunityYear;
     }
 
@@ -95,27 +94,31 @@ public class Card {
         this.applicant = applicant;
     }
 
-    public CityOpportunity getCity() {
-        return city;
+    public CityOpportunity getCityOpportunity() {
+        return cityOpportunity;
     }
 
-    public void setCity(CityOpportunity city) {
-        this.city = city;
+    public void setCityOpportunity(CityOpportunity cityOpportunity) {
+        this.cityOpportunity = cityOpportunity;
     }
 
-    public List<CityOpportunity> getCardOpportunities() {
-        return cardOpportunities;
-    }
-
-    public void setCardOpportunities(List<CityOpportunity> cardOpportunities) {
-        this.cardOpportunities = cardOpportunities;
-    }
-
-    public String getCardOpportunityYear() {
+    public int getCardOpportunityYear() {
         return cardOpportunityYear;
     }
 
-    public void setCardOpportunityYear(String cardOpportunityYear) {
+    public void setCardOpportunityYear(int cardOpportunityYear) {
         this.cardOpportunityYear = cardOpportunityYear;
+    }
+
+    @Override
+    public String toString() {
+        return "Card{" +
+                "id=" + id +
+                ", price=" + price +
+                ", expiryDate='" + expiryDate + '\'' +
+                ", applicant=" + applicant +
+                ", cityOpportunity=" + cityOpportunity +
+                ", cardOpportunityYear=" + cardOpportunityYear +
+                '}';
     }
 }

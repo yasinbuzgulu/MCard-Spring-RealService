@@ -63,9 +63,8 @@ public class CardService {
         System.out.println(card.toString());
         card.setId(newCard.getId());
         card.setApplicant(newCard.getApplicant());
-        card.setCardOpportunities(newCard.getCardOpportunities());
         card.setCardOpportunityYear(newCard.getCardOpportunityYear());
-        card.setCity(newCard.getCity());
+        card.setCityOpportunity(newCard.getCityOpportunity());
         card.setPrice(newCard.getPrice());
         card.setExpiryDate(newCard.getExpiryDate());
         cardRepository.save(card);

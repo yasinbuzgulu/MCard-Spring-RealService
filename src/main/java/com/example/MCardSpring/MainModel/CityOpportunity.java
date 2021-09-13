@@ -1,5 +1,7 @@
 package com.example.MCardSpring.MainModel;
 
+import org.springframework.data.repository.cdi.Eager;
+
 import javax.persistence.*;
 import java.util.List;
 import java.util.Optional;
@@ -26,13 +28,17 @@ public class CityOpportunity {
     /**
      * Şehir - Olanak kaydında olanağın listesi (ismi - yıllık fiyatı - maxtanımlanma yılı)
      */
-    @ManyToMany(targetEntity = Opportunity.class)
+    @ManyToMany(targetEntity = Opportunity.class, fetch = FetchType.EAGER)
     private List<Opportunity> opportunity;
 
       public CityOpportunity(Long id, City city, List<Opportunity> opportunity) {
         this.id = id;
         this.city = city;
         this.opportunity = opportunity;
+    }
+
+    public CityOpportunity() {
+
     }
 
     public City getCity() {
@@ -59,7 +65,7 @@ public class CityOpportunity {
         this.opportunity = opportunity;
     }
 
-      @Override
+    @Override
     public String toString() {
         return "CityOpportunity{" +
                 "id=" + id +
