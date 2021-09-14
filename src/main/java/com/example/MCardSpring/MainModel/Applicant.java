@@ -1,8 +1,10 @@
 package com.example.MCardSpring.MainModel;
 
 import javax.persistence.*;
-import java.util.Objects;
 
+/**
+ * Başvuran kişinin özelliklerini belirten entity
+ */
 @Entity
 public class Applicant {
 

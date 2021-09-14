@@ -3,23 +3,29 @@ package com.example.MCardSpring.MainModel;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+/**
+ * Olanak nesnesinin özelliklerini belirten entity
+ */
 @Entity
 public class Opportunity {
+    /**
+     * Olanak kaydının tutulduğu unique ID
+     */
     @Id
     private Long id;
 
     /**
-     * Şehir - Olanak kaydında olanağın ismi
+     * Olanağın ismi
      */
     private String name;
 
     /**
-     * Şehir - Olanak kaydında olanağın 1 yıl için fiyatı
+     * Olanağın 1 yıl için fiyatı
      */
     private int perYearPrice;
 
     /**
-     * Şehir - Olanak kaydında olanağın tanımlanabileceği max yıl
+     * Olanağın tanımlanabileceği max yıl
      */
     private int topLimitYearValue;
 
@@ -64,5 +70,15 @@ public class Opportunity {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "Opportunity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", perYearPrice=" + perYearPrice +
+                ", topLimitYearValue=" + topLimitYearValue +
+                '}';
     }
 }

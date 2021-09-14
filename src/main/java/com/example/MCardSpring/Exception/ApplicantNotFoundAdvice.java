@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+/**
+ * Applicant ta exception durumu için handling
+ */
 @ControllerAdvice
 class ApplicantNotFoundAdvice    {
 
