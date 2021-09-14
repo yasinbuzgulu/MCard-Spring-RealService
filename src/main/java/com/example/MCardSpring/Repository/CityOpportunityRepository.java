@@ -7,7 +7,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-interface CityOpportunityRepository extends JpaRepository<CityOpportunity, Integer> {
+public
+interface CityOpportunityRepository extends JpaRepository<CityOpportunity, Long> {
     List<CityOpportunity> findAllByCityName(CityOpportunity cityName);
 }
 

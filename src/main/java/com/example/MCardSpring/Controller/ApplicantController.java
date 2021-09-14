@@ -25,7 +25,6 @@ class ApplicantController {
 
     /**
      * GET ile tüm applicant(başvuran) lar çağırılır
-     *
      * @return: applicants (kayıtlı tüm başvuranlar)
      */
     @GetMapping("/applicants")
@@ -37,7 +36,6 @@ class ApplicantController {
 
     /**
      * POST ile yeni bir applicant(başvuran) oluşturulur
-     *
      * @param newApplicant : yeni oluşturulan başvuran
      * @return : newApplicant(yeni kaydedilen applicant)
      */
@@ -48,7 +46,6 @@ class ApplicantController {
 
     /**
      * GET ile ve URI da id ile sadece bir applicant çağırılır
-     *
      * @param id : çağğırılacak applicant ın ID si
      * @return : URI da girilen id değerine sahip başvuranyı döndürür
      */
@@ -77,7 +74,6 @@ class ApplicantController {
 
     /**
      * DELETE le başvuran silinir
-     *
      * @param id: silinecek başvurannın id ' si
      */
     @DeleteMapping("/applicants/{id}")

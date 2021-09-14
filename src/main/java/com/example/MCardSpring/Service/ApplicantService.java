@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,8 +19,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 @Service
 public class ApplicantService {
 
-    @Autowired
-    private ApplicantRepository applicantRepository;
+    private final ApplicantRepository applicantRepository;
 
     public ApplicantService(ApplicantRepository applicantRepository) {
         this.applicantRepository = applicantRepository;
@@ -33,10 +32,6 @@ public class ApplicantService {
         } else {
             applicantRepository.save(applicant);
         }
-        return null;
-    }
-
-    public List<Applicant> findAll() {
         return null;
     }
 

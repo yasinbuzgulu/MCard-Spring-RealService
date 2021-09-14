@@ -11,7 +11,7 @@ public class CityOpportunity {
      */
     @Id
     @GeneratedValue
-    private int id;
+    private Long id;
 
     /**
      * Şehir - Olanak kaydında şehrin ismi
@@ -37,7 +37,8 @@ public class CityOpportunity {
     @ManyToMany(targetEntity = Opportunity.class)
     private List<Opportunity> topLimitYearValue;
 
-    public CityOpportunity(int id, City cityName, List<Opportunity> opportunity, List<Opportunity> perYearPrice, List<Opportunity> topLimitYearValue) {
+    public CityOpportunity(Long id, City cityName, List<Opportunity> opportunity, List<Opportunity> perYearPrice,
+                           List<Opportunity> topLimitYearValue) {
         this.id = id;
         this.cityName = cityName;
         this.opportunity = opportunity;
@@ -45,11 +46,15 @@ public class CityOpportunity {
         this.topLimitYearValue = topLimitYearValue;
     }
 
-    public int getId() {
+    public CityOpportunity() {
+
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
