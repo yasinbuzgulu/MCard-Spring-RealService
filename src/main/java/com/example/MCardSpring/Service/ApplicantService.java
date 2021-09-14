@@ -42,7 +42,7 @@ public class ApplicantService {
      * @return: tüm başvuranları repositoryden bulup döner
      */
     public List<Applicant> listTheApplicants() {
-        return new ArrayList<>(applicantRepository.findAll());
+            return new ArrayList<>(applicantRepository.findAll());
     }
 
     /**

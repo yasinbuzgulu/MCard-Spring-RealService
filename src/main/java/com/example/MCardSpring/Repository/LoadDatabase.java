@@ -45,15 +45,15 @@ public class LoadDatabase {
             log.info("Preloading City 2" + cityRepository.findById(4L).get());
 
             Opportunity testOpportunity = new Opportunity(5L, "Otopark", 200, 5);
-            var result = opportunityRepository.save(testOpportunity);
+            opportunityRepository.save(testOpportunity);
             log.info("Preloading Opportunity 1 " + testOpportunity);
 
             Opportunity testOpportunity2 = new Opportunity(6L, "Havuz", 120, 3);
-            var result2 = opportunityRepository.save(testOpportunity2);
+            opportunityRepository.save(testOpportunity2);
             log.info("Preloading Opportunity 2 " + testOpportunity2);
 
             Opportunity testOpportunity3 = new Opportunity(7L, "Parasailing", 500, 1);
-            var result3 = opportunityRepository.save(testOpportunity3);
+            opportunityRepository.save(testOpportunity3);
             log.info("Preloading Opportunity 3 " + testOpportunity3);
 
             List<Opportunity> opportunityList = new ArrayList<>();
@@ -66,26 +66,26 @@ public class LoadDatabase {
 
             CityOpportunity testCityOpportunity = new CityOpportunity(3L, cityRepository.findById(4L).get(),
                     opportunityList);
-            var result4 = cityOpportunityRepository.save(testCityOpportunity);
+            cityOpportunityRepository.save(testCityOpportunity);
             log.info("Preloading-- CityOpportunity" + testCityOpportunity);
 
             CityOpportunity testCityOpportunity2 = new CityOpportunity(4L, cityRepository.findById(3L).get(),
                     opportunityList2);
-            var result5 = cityOpportunityRepository.save(testCityOpportunity2);
+            cityOpportunityRepository.save(testCityOpportunity2);
             log.info("Preloading-- CityOpportunity 2" + testCityOpportunity2);
-           // var a =(cityOpportunityRepository.findAll());
+            // var a =(cityOpportunityRepository.findAll());
 
             CityOpportunity testOPP = cityOpportunityRepository.findById(3L).get();
             CityOpportunity testOPP2 = cityOpportunityRepository.findById(4L).get();
 
             Card testCard = new Card(5L, 250, "09/12/2024", applicantRepository.findById(1L).get(),
                     testOPP, 5);
-            var result6 = cardRepository.save(testCard);
+            cardRepository.save(testCard);
             log.info("Preloading Card 1" + testCard);
 
             Card testCard2 = new Card(6L, 20, "09/12/2024", applicantRepository.findById(2L).get(),
                     testOPP2, 5);
-            var result7 = cardRepository.save(testCard2);
+            cardRepository.save(testCard2);
             log.info("Preloading Card 2" + testCard2);
 
 

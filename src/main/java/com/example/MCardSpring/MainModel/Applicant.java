@@ -1,5 +1,7 @@
 package com.example.MCardSpring.MainModel;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 
 /**
@@ -18,31 +20,37 @@ public class Applicant {
     /**
      * Başvuran kişinin kaydında başvuranın ismi
      */
+    @NotNull
     private String name;
 
     /**
      * Başvuran kişinin kaydında başvuranın soyismi
      */
+    @NotNull
     private String surname;
 
     /**
      * Başvuran kişinin kaydında başvuranın doğum tarihi
      */
+    @NotNull
     private String birthDate;
 
     /**
      * Başvuran kişinin kaydında başvuranın kimlik numarası
      */
+    @NotNull
     private long citizenNumber;
 
     /**
      * Başvuran kişinin kaydında başvuranın yaşına göre tipi (çocuk/normal/yaşlı)
      */
+    @NotNull
     private String typeBasedOnAge;
 
     /**
      * Başvuran kişinin kaydında başvuranın eğitime göre tipi (öğrenci/sivil/ikisi de değil)
      */
+    @NotNull
     private String typeBasedOnEducation;
 
     public Applicant() {

@@ -1,8 +1,8 @@
 package com.example.MCardSpring.MainModel;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
-import java.util.List;
-import java.util.Optional;
 
 /**
  * Kart nesnesinin özelliklerini belirten entity
@@ -19,6 +19,7 @@ public class Card {
     /**
      * Kart kaydında kart fiyatı
      */
+    @NotNull
     private int price;
 
     /**
@@ -37,12 +38,6 @@ public class Card {
      */
     @ManyToOne(targetEntity = CityOpportunity.class)
     private CityOpportunity cityOpportunity;
-
-//    /**
-//     * Kart kaydında kartın tanımlandığı şehirlerden seçilen olanaklar
-//     */
-//    @ManyToMany(targetEntity = CityOpportunity.class)
-//    private List<CityOpportunity> cardOpportunities;
 
     /**
      * Kart kaydında seçilen olanakların kaç yıl için tanımlanacağı
