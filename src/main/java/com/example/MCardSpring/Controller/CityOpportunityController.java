@@ -1,6 +1,7 @@
 package com.example.MCardSpring.Controller;
 
 import com.example.MCardSpring.Exception.CityOpportunityNotFoundException;
+import com.example.MCardSpring.MainModel.Applicant;
 import com.example.MCardSpring.MainModel.CityOpportunity;
 import com.example.MCardSpring.Repository.CityOpportunityRepository;
 import com.example.MCardSpring.Service.CityOpportunityService;
@@ -33,9 +34,9 @@ public class CityOpportunityController {
      *
      * @return: tüm şehir-olanakları döner
      */
-    @GetMapping("/cityOpportunities")
-    public ResponseEntity<List<CityOpportunity>> listTheCityOpportunities() {
-        List<CityOpportunity> cityOpportunities = cityOpportunityService.listTheCityOpportunities();
+    @GetMapping("/city-opportunities")
+    public ResponseEntity<List<CityOpportunity>> listCityOpportunities() {
+        List<CityOpportunity> cityOpportunities = cityOpportunityService.listCityOpportunities();
         return ResponseEntity.ok().body(cityOpportunities);
     }
 
@@ -45,15 +46,10 @@ public class CityOpportunityController {
      * @param id: çağırılan şehir-olanak kaydının id si
      * @return: id sine sahip şehir-olanak kaydını döner (status 200 ve "OK" ile)
      */
-    @GetMapping("/cityOpportunities/{id}")
+    @GetMapping("/city-opportunities/{id}")
     public ResponseEntity<CityOpportunity> getCityOpportunityById(@PathVariable Long id) {
-        CityOpportunity cityOpportunity = cityOpportunityRepository.getById(id);
-
-        if (cityOpportunity == null) {
-            throw new CityOpportunityNotFoundException(id);
-        }
-        return new ResponseEntity<>(cityOpportunityService.getCityOpportunityById(id), HttpStatus.OK);
-    }
+        CityOpportunity cityOpportunity = cityOpportunityService.getCityOpportunityById(id);
+        return new ResponseEntity<>(cityOpportunity, HttpStatus.OK);    }
 
     /**
      * POST ile yeni bir şehir-olanak kaydı oluşturulur
@@ -61,7 +57,7 @@ public class CityOpportunityController {
      * @param cityOpportunity: oluşturulacak yeni şehir-olanak kaydu
      * @return: yeni şehir-olanak kayıt edilmiş status u 201 "CREATED" döner
      */
-    @PostMapping("cityOpportunities/")
+    @PostMapping("city-opportunities/")
     public ResponseEntity<CityOpportunity> createCityOpportunity(@RequestBody CityOpportunity cityOpportunity) {
         cityOpportunity = cityOpportunityService.createCityOpportunity(cityOpportunity);
         HttpHeaders httpHeaders = new HttpHeaders();
@@ -76,7 +72,7 @@ public class CityOpportunityController {
      * @param id:              düzenlemenin yapılcağı şehir-olanak kaydının id si
      * @return: güncelenmiş şehir-olanak kaydı döndürülür
      */
-    @PutMapping("/cityOpportunities/{id}")
+    @PutMapping("/city-opportunities/{id}")
     public ResponseEntity<CityOpportunity> updateCityOpportunity(@RequestBody CityOpportunity cityOpportunity, @PathVariable("id") Long id) {
         cityOpportunityService.updateCityOpportunity(cityOpportunity, id);
         return new ResponseEntity<>(cityOpportunityService.getCityOpportunityById(id), HttpStatus.OK);
@@ -88,8 +84,9 @@ public class CityOpportunityController {
      * @param id: Silinecek şehir-olanka kaydının id si
      * @return: status u 204 döner ("No Content")
      */
-    @DeleteMapping("cityOpportunities/{id}")
+    @DeleteMapping("city-opportunities/{id}")
     public ResponseEntity<CityOpportunity> deleteCityOpportunity(@PathVariable("id") Long id) {
+
         cityOpportunityService.deleteCityOpportunity(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

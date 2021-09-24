@@ -1,6 +1,7 @@
 package com.example.MCardSpring.Controller;
 
 import com.example.MCardSpring.Exception.CardNotFoundException;
+import com.example.MCardSpring.MainModel.Applicant;
 import com.example.MCardSpring.MainModel.Card;
 import com.example.MCardSpring.Repository.CardRepository;
 import com.example.MCardSpring.Service.CardService;
@@ -33,8 +34,8 @@ public class CardController {
      * @return: tüm kartları döner
      */
     @GetMapping("/cards")
-    public ResponseEntity<List<Card>> listTheCards() {
-        List<Card> cards = cardService.listTheCards();
+    public ResponseEntity<List<Card>> listCards() {
+        List<Card> cards = cardService.listCards();
         return ResponseEntity.ok().body(cards);
     }
 
@@ -46,12 +47,8 @@ public class CardController {
      */
     @GetMapping("/cards/{id}")
     public ResponseEntity<Card> getCardById(@PathVariable Long id) {
-        Card card = cardRepository.getById(id);
-
-        if (card == null) {
-            throw new CardNotFoundException(id);
-        }
-        return new ResponseEntity<>(cardService.getCardById(id), HttpStatus.OK);
+        Card card = cardService.getCardById(id);
+        return new ResponseEntity<>(card, HttpStatus.OK);
     }
 
     /**
@@ -60,7 +57,7 @@ public class CardController {
      * @param card:Ouşturulacak kart nesnesi
      * @return: oluşturulan kartı döner
      */
-    @PostMapping("cards/")
+    @PostMapping("/cards")
     public ResponseEntity<Card> createCard(@RequestBody Card card) {
         card = cardService.createCard(card);
         HttpHeaders httpHeaders = new HttpHeaders();

@@ -24,70 +24,123 @@ public class LoadDatabase {
                                    CityOpportunityRepository cityOpportunityRepository,
                                    CardRepository cardRepository) {
         return args -> {
-            Applicant testApplicant = new Applicant("Yasin", "Büzgülü",
+            Applicant yasinB = new Applicant("Yasin", "Büzgülü",
                     "05/09/1997", 53452312702L, "Normal",
-                    "Öğrenci", 1L);
-            applicantRepository.save(testApplicant);
-            log.info("Preloading Applicant 1 " + applicantRepository.findById(1L).get());
+                    "Öğrenci");
+            yasinB = applicantRepository.save(yasinB);
 
-            Applicant testApplicant2 = new Applicant("Fuat", "Başgil",
+            Applicant fuatB = new Applicant("Fuat", "Başgil",
                     "01/12/1893", 14513286998L, "Yaşlı",
-                    "Sivil", 2L);
-            applicantRepository.save(testApplicant2);
-            log.info("Preloading Applicant 2 " + applicantRepository.findById(2L).get());
+                    "Sivil");
+            fuatB = applicantRepository.save(fuatB);
 
-            City testCity = new City(3L, "İstanbul");
-            cityRepository.save(testCity);
-            log.info("Preloading City 1" + cityRepository.findById(3L).get());
+            City istanbul = new City();
+            istanbul.setCityName("ISTANBUL");
+            istanbul = cityRepository.save(istanbul);
 
-            City testCity2 = new City(4L, "Adana");
-            cityRepository.save(testCity2);
-            log.info("Preloading City 2" + cityRepository.findById(4L).get());
+            City adana = new City();
+            adana.setCityName("ADANA");
+            adana = cityRepository.save(adana);
 
-            Opportunity testOpportunity = new Opportunity(5L, "Otopark", 200, 5);
-            opportunityRepository.save(testOpportunity);
-            log.info("Preloading Opportunity 1 " + testOpportunity);
+            City ankara = new City();
+            ankara.setCityName("ANKARA");
+            ankara = cityRepository.save(ankara);
 
-            Opportunity testOpportunity2 = new Opportunity(6L, "Havuz", 120, 3);
-            opportunityRepository.save(testOpportunity2);
-            log.info("Preloading Opportunity 2 " + testOpportunity2);
+            City izmir = new City();
+            izmir.setCityName("IZMIR");
+            izmir = cityRepository.save(izmir);
 
-            Opportunity testOpportunity3 = new Opportunity(7L, "Parasailing", 500, 1);
-            opportunityRepository.save(testOpportunity3);
-            log.info("Preloading Opportunity 3 " + testOpportunity3);
+            City bursa = new City();
+            bursa.setCityName("BURSA");
+            bursa = cityRepository.save(bursa);
 
-            List<Opportunity> opportunityList = new ArrayList<>();
-            opportunityList.add(testOpportunity);
+            Opportunity parking = new Opportunity();
+            parking.setName("PARKING");
+            parking = opportunityRepository.save(parking);
 
-            List<Opportunity> opportunityList2 = new ArrayList<>();
-            opportunityList2.add(testOpportunity);
-            opportunityList2.add(testOpportunity2);
-            opportunityList2.add(testOpportunity3);
+            Opportunity library = new Opportunity();
+            library.setName("LIBRARY");
+            library = opportunityRepository.save(library);
 
-            CityOpportunity testCityOpportunity = new CityOpportunity(3L, cityRepository.findById(4L).get(),
-                    opportunityList);
-            cityOpportunityRepository.save(testCityOpportunity);
-            log.info("Preloading-- CityOpportunity" + testCityOpportunity);
+            Opportunity museum = new Opportunity();
+            museum.setName("MUSEUM");
+            museum = opportunityRepository.save(museum);
 
-            CityOpportunity testCityOpportunity2 = new CityOpportunity(4L, cityRepository.findById(3L).get(),
-                    opportunityList2);
-            cityOpportunityRepository.save(testCityOpportunity2);
-            log.info("Preloading-- CityOpportunity 2" + testCityOpportunity2);
-            // var a =(cityOpportunityRepository.findAll());
+            Opportunity theatre = new Opportunity();
+            theatre.setName("THEATRE");
+            theatre = opportunityRepository.save(theatre);
 
-            CityOpportunity testOPP = cityOpportunityRepository.findById(3L).get();
-            CityOpportunity testOPP2 = cityOpportunityRepository.findById(4L).get();
+            CityOpportunity istanbulMuseum = new CityOpportunity(istanbul, museum, 250, 5);
+            istanbulMuseum = cityOpportunityRepository.save(istanbulMuseum);
+            CityOpportunity istanbulParking = new CityOpportunity(istanbul, parking, 50, 4);
+            istanbulParking = cityOpportunityRepository.save(istanbulParking);
+            CityOpportunity istanbulTheatre = new CityOpportunity(istanbul, theatre, 250, 5);
+            istanbulTheatre = cityOpportunityRepository.save(istanbulTheatre);
+            CityOpportunity istanbulLibrary = new CityOpportunity(istanbul, library, 250, 5);
+            istanbulLibrary = cityOpportunityRepository.save(istanbulLibrary);
 
-            Card testCard = new Card(5L, 250, "09/12/2024", applicantRepository.findById(1L).get(),
-                    testOPP, 5);
-            cardRepository.save(testCard);
-            log.info("Preloading Card 1" + testCard);
+            CityOpportunity bursaTheatre = new CityOpportunity(bursa, theatre, 400, 3);
+            bursaTheatre = cityOpportunityRepository.save(bursaTheatre);
+            CityOpportunity bursaLibrary = new CityOpportunity(bursa, library, 400, 3);
+            bursaLibrary = cityOpportunityRepository.save(bursaLibrary);
+            CityOpportunity bursaMuseum = new CityOpportunity(bursa, museum, 400, 3);
+            bursaMuseum = cityOpportunityRepository.save(bursaMuseum);
 
-            Card testCard2 = new Card(6L, 20, "09/12/2024", applicantRepository.findById(2L).get(),
-                    testOPP2, 5);
+            CityOpportunity ankaraTheatre = new CityOpportunity(ankara, theatre, 400, 3);
+            ankaraTheatre = cityOpportunityRepository.save(ankaraTheatre);
+            CityOpportunity ankaraLibrary = new CityOpportunity(ankara, library, 400, 3);
+            ankaraLibrary = cityOpportunityRepository.save(ankaraLibrary);
+            CityOpportunity ankaraParking = new CityOpportunity(ankara, parking, 400, 3);
+            ankaraParking = cityOpportunityRepository.save(ankaraParking);
+            CityOpportunity ankaraMuseum = new CityOpportunity(ankara, museum, 400, 3);
+            ankaraMuseum = cityOpportunityRepository.save(ankaraMuseum);
+
+            CityOpportunity izmirMuseum = new CityOpportunity(izmir, museum, 400, 3);
+            izmirMuseum = cityOpportunityRepository.save(izmirMuseum);
+            CityOpportunity izmirTheatre = new CityOpportunity(izmir, theatre, 400, 3);
+            izmirTheatre = cityOpportunityRepository.save(izmirTheatre);
+
+            CityOpportunity adanaParking = new CityOpportunity(adana, parking, 400, 3);
+            adanaParking = cityOpportunityRepository.save(adanaParking);
+            CityOpportunity adanaMuseum = new CityOpportunity(adana, museum, 400, 3);
+            adanaMuseum = cityOpportunityRepository.save(adanaMuseum);
+            CityOpportunity adanaLibrary = new CityOpportunity(adana, library, 400, 3);
+            adanaLibrary = cityOpportunityRepository.save(adanaLibrary);
+
+            List<CityOpportunity> istanbulOpportunityList = new ArrayList<>();
+            istanbulOpportunityList.add(istanbulMuseum);
+            istanbulOpportunityList.add(istanbulParking);
+            istanbulOpportunityList.add(istanbulTheatre);
+            istanbulOpportunityList.add(istanbulLibrary);
+
+            List<CityOpportunity> ankaraOpportunityList = new ArrayList<>();
+            ankaraOpportunityList.add(ankaraTheatre);
+            ankaraOpportunityList.add(ankaraLibrary);
+            ankaraOpportunityList.add(ankaraParking);
+            ankaraOpportunityList.add(ankaraMuseum);
+
+            List<CityOpportunity> adanaOpportunityList = new ArrayList<>();
+            adanaOpportunityList.add(adanaMuseum);
+            adanaOpportunityList.add(adanaParking);
+            adanaOpportunityList.add(adanaLibrary);
+
+            List<CityOpportunity> bursaOpportunityList = new ArrayList<>();
+            bursaOpportunityList.add(bursaTheatre);
+            bursaOpportunityList.add(bursaLibrary);
+            bursaOpportunityList.add(bursaMuseum);
+
+            List<CityOpportunity> izmirOpportunityList = new ArrayList<>();
+            izmirOpportunityList.add(izmirTheatre);
+            izmirOpportunityList.add(izmirMuseum);
+
+
+            Card testCard = new Card(250, "09/09/2023", yasinB,
+                    bursaOpportunityList, 4);
+            testCard = cardRepository.save(testCard);
+
+            Card testCard2 = new Card(20, "09/12/2024", fuatB,
+                    istanbulOpportunityList, 5);
             cardRepository.save(testCard2);
-            log.info("Preloading Card 2" + testCard2);
-
 
         };
 

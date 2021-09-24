@@ -1,6 +1,7 @@
 package com.example.MCardSpring.MainModel;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 /**
@@ -12,6 +13,7 @@ public class City {
      * Şehir nesnesinin unique id si
      */
     @Id
+    @GeneratedValue
     private  Long id;
 
     /**
@@ -19,9 +21,9 @@ public class City {
      */
     private String cityName;
 
-    public City(Long id, String cityName) {
-        this.id = id;
+    public City( Long id, String cityName) {
         this.cityName = cityName;
+        this.id = id;
     }
 
     public City() {

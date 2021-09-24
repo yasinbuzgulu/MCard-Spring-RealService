@@ -3,6 +3,8 @@ package com.example.MCardSpring.MainModel;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * Kart nesnesinin özelliklerini belirten entity
@@ -36,8 +38,8 @@ public class Card {
     /**
      * Kart kaydında kartın tanımlandığı şehir
      */
-    @ManyToOne(targetEntity = CityOpportunity.class)
-    private CityOpportunity cityOpportunity;
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<CityOpportunity> cityOpportunity;
 
     /**
      * Kart kaydında seçilen olanakların kaç yıl için tanımlanacağı
@@ -47,9 +49,8 @@ public class Card {
     public Card() {
     }
 
-    public Card(Long id, int price, String expiryDate, Applicant applicant, CityOpportunity cityOpportunity,
+    public Card(int price, String expiryDate, Applicant applicant, List<CityOpportunity> cityOpportunity,
                 int cardOpportunityYear) {
-        this.id = id;
         this.price = price;
         this.expiryDate = expiryDate;
         this.applicant = applicant;
@@ -89,11 +90,11 @@ public class Card {
         this.applicant = applicant;
     }
 
-    public CityOpportunity getCityOpportunity() {
+    public List<CityOpportunity> getCityOpportunity() {
         return cityOpportunity;
     }
 
-    public void setCityOpportunity(CityOpportunity cityOpportunity) {
+    public void setCityOpportunity(List<CityOpportunity> cityOpportunity) {
         this.cityOpportunity = cityOpportunity;
     }
 

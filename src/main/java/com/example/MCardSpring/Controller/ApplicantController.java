@@ -1,6 +1,5 @@
 package com.example.MCardSpring.Controller;
 
-import com.example.MCardSpring.Exception.ApplicantNotFoundException;
 import com.example.MCardSpring.MainModel.Applicant;
 import com.example.MCardSpring.Repository.ApplicantRepository;
 import com.example.MCardSpring.Service.ApplicantService;
@@ -34,8 +33,8 @@ public class ApplicantController {
      * @return: applicants (kayıtlı tüm başvuranlar)
      */
     @GetMapping("/applicants")
-    public ResponseEntity<List<Applicant>> listTheApplicants() {
-        List<Applicant> applicants = applicantService.listTheApplicants();
+    public ResponseEntity<List<Applicant>> listApplicants() {
+        List<Applicant> applicants = applicantService.listApplicants();
         return ResponseEntity.ok().body(applicants);
     }
 
@@ -47,12 +46,8 @@ public class ApplicantController {
      */
     @GetMapping("/applicants/{id}")
     public ResponseEntity<Applicant> getApplicantById(@PathVariable Long id) {
-        Applicant applicant = applicantRepository.getById(id);
-
-        if (applicant == null) {
-            throw new ApplicantNotFoundException(id);
-        }
-        return new ResponseEntity<>(applicantService.getApplicantById(id), HttpStatus.OK);
+        Applicant applicant = applicantService.getApplicantById(id);
+        return new ResponseEntity<>(applicant, HttpStatus.OK);
     }
 
     /**
