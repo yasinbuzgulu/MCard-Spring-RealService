@@ -3,7 +3,6 @@ package com.example.MCardSpring.Service;
 import com.example.MCardSpring.Exception.CityOpportunityNotFoundException;
 import com.example.MCardSpring.MainModel.CityOpportunity;
 import com.example.MCardSpring.Repository.CityOpportunityRepository;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -78,7 +77,7 @@ public class CityOpportunityService {
         cityOpportunity.setCity(newCityOpportunity.getCity());
         cityOpportunity.setOpportunity(newCityOpportunity.getOpportunity());
         cityOpportunity.setPerYearPrice(newCityOpportunity.getPerYearPrice());
-        cityOpportunity.setTopLimitYearValue(newCityOpportunity.getTopLimitYearValue());
+        // cityOpportunity.setTopLimitYearValue(newCityOpportunity.getTopLimitYearValue());
         cityOpportunityRepository.save(cityOpportunity);
     }
 
