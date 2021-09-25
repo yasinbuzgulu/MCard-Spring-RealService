@@ -18,4 +18,11 @@ class ApplicantNotFoundAdvice    {
     String applicantNotFoundHandler (ApplicantNotFoundException applicantNotFoundException) {
         return applicantNotFoundException.getMessage();
     }
+
+    @ResponseBody
+    @ExceptionHandler(ApplicantBadRequestException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    String applicantBadRequestHandler (ApplicantBadRequestException applicantBadRequestException) {
+        return applicantBadRequestException.getMessage();
+    }
 }

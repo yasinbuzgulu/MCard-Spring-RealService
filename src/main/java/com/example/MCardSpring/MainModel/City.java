@@ -21,9 +21,9 @@ public class City {
      */
     private String cityName;
 
-    public City( Long id, String cityName) {
+    public City(String cityName) {
         this.cityName = cityName;
-        this.id = id;
+
     }
 
     public City() {

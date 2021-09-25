@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,12 +26,12 @@ public class Applicant {
     /**
      * Başvuran kişinin kaydında başvuranın ismi
      */
-    @NotNull
+    @NotBlank
     private String name;
     /**
      * Başvuran kişinin kaydında başvuranın soyismi
      */
-    @NotNull
+    @NotBlank
     private String surname;
     /**
      * Başvuran kişinin kaydında başvuranın doğum tarihi

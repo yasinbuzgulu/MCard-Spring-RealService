@@ -21,10 +21,8 @@ public class Opportunity {
      */
     private String name;
 
-    public Opportunity(Long id, String name) {
-        this.id = id;
+    public Opportunity( String name) {
         this.name = name;
-
     }
 
     public Opportunity() {

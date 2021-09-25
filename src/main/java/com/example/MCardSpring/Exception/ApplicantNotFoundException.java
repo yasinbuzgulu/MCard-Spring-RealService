@@ -7,4 +7,5 @@ package com.example.MCardSpring.Exception;
      public ApplicantNotFoundException(Long id) {
         super("No applicant with id :" + id );
     }
+
 }

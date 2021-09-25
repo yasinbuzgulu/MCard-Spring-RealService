@@ -70,41 +70,41 @@ public class LoadDatabase {
             theatre.setName("THEATRE");
             theatre = opportunityRepository.save(theatre);
 
-            CityOpportunity istanbulMuseum = new CityOpportunity(istanbul, museum, 250, 5);
+            CityOpportunity istanbulMuseum = new CityOpportunity(istanbul, museum, 250);
             istanbulMuseum = cityOpportunityRepository.save(istanbulMuseum);
-            CityOpportunity istanbulParking = new CityOpportunity(istanbul, parking, 50, 4);
+            CityOpportunity istanbulParking = new CityOpportunity(istanbul, parking, 50);
             istanbulParking = cityOpportunityRepository.save(istanbulParking);
-            CityOpportunity istanbulTheatre = new CityOpportunity(istanbul, theatre, 250, 5);
+            CityOpportunity istanbulTheatre = new CityOpportunity(istanbul, theatre, 250);
             istanbulTheatre = cityOpportunityRepository.save(istanbulTheatre);
-            CityOpportunity istanbulLibrary = new CityOpportunity(istanbul, library, 250, 5);
+            CityOpportunity istanbulLibrary = new CityOpportunity(istanbul, library, 250);
             istanbulLibrary = cityOpportunityRepository.save(istanbulLibrary);
 
-            CityOpportunity bursaTheatre = new CityOpportunity(bursa, theatre, 400, 3);
+            CityOpportunity bursaTheatre = new CityOpportunity(bursa, theatre, 400);
             bursaTheatre = cityOpportunityRepository.save(bursaTheatre);
-            CityOpportunity bursaLibrary = new CityOpportunity(bursa, library, 400, 3);
+            CityOpportunity bursaLibrary = new CityOpportunity(bursa, library, 400);
             bursaLibrary = cityOpportunityRepository.save(bursaLibrary);
-            CityOpportunity bursaMuseum = new CityOpportunity(bursa, museum, 400, 3);
+            CityOpportunity bursaMuseum = new CityOpportunity(bursa, museum, 400);
             bursaMuseum = cityOpportunityRepository.save(bursaMuseum);
 
-            CityOpportunity ankaraTheatre = new CityOpportunity(ankara, theatre, 400, 3);
+            CityOpportunity ankaraTheatre = new CityOpportunity(ankara, theatre, 400);
             ankaraTheatre = cityOpportunityRepository.save(ankaraTheatre);
-            CityOpportunity ankaraLibrary = new CityOpportunity(ankara, library, 400, 3);
+            CityOpportunity ankaraLibrary = new CityOpportunity(ankara, library, 400);
             ankaraLibrary = cityOpportunityRepository.save(ankaraLibrary);
-            CityOpportunity ankaraParking = new CityOpportunity(ankara, parking, 400, 3);
+            CityOpportunity ankaraParking = new CityOpportunity(ankara, parking, 400);
             ankaraParking = cityOpportunityRepository.save(ankaraParking);
-            CityOpportunity ankaraMuseum = new CityOpportunity(ankara, museum, 400, 3);
+            CityOpportunity ankaraMuseum = new CityOpportunity(ankara, museum, 400);
             ankaraMuseum = cityOpportunityRepository.save(ankaraMuseum);
 
-            CityOpportunity izmirMuseum = new CityOpportunity(izmir, museum, 400, 3);
+            CityOpportunity izmirMuseum = new CityOpportunity(izmir, museum, 400);
             izmirMuseum = cityOpportunityRepository.save(izmirMuseum);
-            CityOpportunity izmirTheatre = new CityOpportunity(izmir, theatre, 400, 3);
+            CityOpportunity izmirTheatre = new CityOpportunity(izmir, theatre, 400);
             izmirTheatre = cityOpportunityRepository.save(izmirTheatre);
 
-            CityOpportunity adanaParking = new CityOpportunity(adana, parking, 400, 3);
+            CityOpportunity adanaParking = new CityOpportunity(adana, parking, 400);
             adanaParking = cityOpportunityRepository.save(adanaParking);
-            CityOpportunity adanaMuseum = new CityOpportunity(adana, museum, 400, 3);
+            CityOpportunity adanaMuseum = new CityOpportunity(adana, museum, 400);
             adanaMuseum = cityOpportunityRepository.save(adanaMuseum);
-            CityOpportunity adanaLibrary = new CityOpportunity(adana, library, 400, 3);
+            CityOpportunity adanaLibrary = new CityOpportunity(adana, library, 400);
             adanaLibrary = cityOpportunityRepository.save(adanaLibrary);
 
             List<CityOpportunity> istanbulOpportunityList = new ArrayList<>();

@@ -1,7 +1,5 @@
 package com.example.MCardSpring.Controller;
 
-import com.example.MCardSpring.Exception.CardNotFoundException;
-import com.example.MCardSpring.MainModel.Applicant;
 import com.example.MCardSpring.MainModel.Card;
 import com.example.MCardSpring.Repository.CardRepository;
 import com.example.MCardSpring.Service.CardService;

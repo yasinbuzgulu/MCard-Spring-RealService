@@ -3,11 +3,13 @@ package com.example.MCardSpring.Controller;
 import com.example.MCardSpring.MainModel.Applicant;
 import com.example.MCardSpring.Repository.ApplicantRepository;
 import com.example.MCardSpring.Service.ApplicantService;
+
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
 import java.util.List;
 
 /**
@@ -19,7 +21,7 @@ public class ApplicantController {
     /**
      * Controller içinde kullanılacak applicant serivisi instance oluşturmadan constructor ile çağrılır
      */
-    ApplicantService applicantService;
+        ApplicantService applicantService;
     ApplicantRepository applicantRepository;
 
     public ApplicantController(ApplicantService applicantService, ApplicantRepository applicantRepository) {
@@ -57,7 +59,7 @@ public class ApplicantController {
      * @return : newApplicant(yeni kaydedilen applicant)
      */
     @PostMapping("/applicants")
-    public ResponseEntity<Applicant> createApplicant(@RequestBody Applicant applicant) {
+    public ResponseEntity<Applicant> createApplicant(@RequestBody Applicant applicant) throws ParseException {
         applicant = applicantService.createApplicant(applicant);
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add("applicant", "/applicants/" + applicant.getId().toString());
@@ -72,7 +74,7 @@ public class ApplicantController {
      * @return : girilen id ye sahip başvurannın güncellemesini döndürür
      */
     @PutMapping("/applicants/{id}")
-    public ResponseEntity<Applicant> updateApplicant(@RequestBody Applicant applicant, @PathVariable("id") Long id) {
+    public ResponseEntity<Applicant> updateApplicant(@RequestBody Applicant applicant, @PathVariable("id") Long id) throws ParseException {
         applicantService.updateApplicant(applicant, id);
         return new ResponseEntity<>(applicantService.getApplicantById(id), HttpStatus.OK);
     }

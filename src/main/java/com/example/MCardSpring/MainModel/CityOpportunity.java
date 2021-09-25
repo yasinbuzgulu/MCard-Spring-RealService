@@ -1,12 +1,6 @@
 package com.example.MCardSpring.MainModel;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.springframework.data.repository.cdi.Eager;
-
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 
 /**
  * Şehir-olanak nesnesinin özelliklerini belirten entity
@@ -24,7 +18,7 @@ public class CityOpportunity {
     /**
      * Şehir - Olanak kaydında şehrin ismi
      */
-    @ManyToOne( targetEntity = City.class)
+    @ManyToOne(targetEntity = City.class)
     private City city;
 
     /**
@@ -41,13 +35,12 @@ public class CityOpportunity {
     /**
      * Olanağın tanımlanabileceği max yıl
      */
-    private int topLimitYearValue;
-
-      public CityOpportunity(City city, Opportunity opportunity,int perYearPrice,int topLimitYearValue) {
+    // private int topLimitYearValue;
+    public CityOpportunity(City city, Opportunity opportunity, int perYearPrice) {
         this.city = city;
         this.opportunity = opportunity;
         this.perYearPrice = perYearPrice;
-        this.topLimitYearValue = topLimitYearValue;
+        //   this.topLimitYearValue = topLimitYearValue;
     }
 
     public CityOpportunity() {
@@ -86,13 +79,13 @@ public class CityOpportunity {
         this.perYearPrice = perYearPrice;
     }
 
-    public int getTopLimitYearValue() {
-        return topLimitYearValue;
-    }
-
-    public void setTopLimitYearValue(int topLimitYearValue) {
-        this.topLimitYearValue = topLimitYearValue;
-    }
+//    public int getTopLimitYearValue() {
+//        return topLimitYearValue;
+//    }
+//
+//    public void setTopLimitYearValue(int topLimitYearValue) {
+//        this.topLimitYearValue = topLimitYearValue;
+//    }
 
     @Override
     public String toString() {
@@ -101,7 +94,7 @@ public class CityOpportunity {
                 ", city=" + city +
                 ", opportunity=" + opportunity +
                 ", perYearPrice=" + perYearPrice +
-                ", topLimitYearValue=" + topLimitYearValue +
+                //", topLimitYearValue=" + topLimitYearValue +
                 '}';
     }
 }
