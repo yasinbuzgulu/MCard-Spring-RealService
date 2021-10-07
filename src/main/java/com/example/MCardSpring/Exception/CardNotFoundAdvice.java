@@ -17,4 +17,11 @@ public class CardNotFoundAdvice {
     String cardNotFoundHandler (CardNotFoundException cardNotFoundException) {
         return cardNotFoundException.getMessage();
     }
+
+    @ResponseBody
+    @ExceptionHandler(CardBadRequestException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    String cardBadRequestException (CardBadRequestException cardBadRequestException) {
+        return cardBadRequestException.getMessage();
+    }
 }

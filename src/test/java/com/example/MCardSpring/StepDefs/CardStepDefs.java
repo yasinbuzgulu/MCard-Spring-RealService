@@ -160,4 +160,65 @@ public class CardStepDefs {
     public void kartBasariIleGuncellenir() throws Throwable {
         action.andExpect(status().is(200));
     }
+
+    @When("{string} kartının başvuran'ı boş post edildiğinde")
+    public void kartininBasvuranIBosPostEdildiginde(String key) throws Throwable {
+        Card card = (Card) contex.get(key);
+        card.setApplicant(null);
+        action = mvc.perform(MockMvcRequestBuilders
+                .post("http://localhost:8080/cards")
+                .content(asJsonString(card))
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON));
+    }
+
+    @When("{string} kartının şehir-olanak'ı boş post edildiğinde")
+    public void kartininSehirOlanakIBosPostEdildiginde(String key) throws Throwable{
+        Card card = (Card) contex.get(key);
+        card.setCityOpportunity(null);
+        action = mvc.perform(MockMvcRequestBuilders
+                .post("http://localhost:8080/cards")
+                .content(asJsonString(card))
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON));
+    }
+
+    @When("{string} kartının son kullanma tarihi boş post edildiğinde")
+    public void kartininSonKullanmaTarihiBosPostEdildiginde(String key) throws Throwable{
+        Card card = (Card) contex.get(key);
+        card.setExpiryDate(null);
+        action = mvc.perform(MockMvcRequestBuilders
+                .post("http://localhost:8080/cards")
+                .content(asJsonString(card))
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON));
+    }
+
+    @When("{string} kartının fiyatı boş post edildiğinde")
+    public void kartininFiyatiBosPostEdildiginde(String key) throws Throwable{
+        Card card = (Card) contex.get(key);
+        card.setPrice(null);
+        action = mvc.perform(MockMvcRequestBuilders
+                .post("http://localhost:8080/cards")
+                .content(asJsonString(card))
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON));
+    }
+
+    @When("{string} kartının olanak tanımlanma yılı boş post edildiğinde")
+    public void kartininOlanakTanimlanmaYiliBosPostEdildiginde(String key) throws Throwable{
+        Card card = (Card) contex.get(key);
+        card.setCardOpportunityYear(null);
+        action = mvc.perform(MockMvcRequestBuilders
+                .post("http://localhost:8080/cards")
+                .content(asJsonString(card))
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON));
+    }
+
+    @Then("Kart postu hata verir")
+    public void kartPostuHataVerir() throws Throwable {
+        action.andExpect(status().is(400));
+
+    }
 }

@@ -92,7 +92,7 @@ public class CardService {
 
     void validateCard(Card card) {
         if (card.getApplicant() == null || card.getCityOpportunity() == null || card.getExpiryDate() == null ||
-                String.valueOf(card.getCardOpportunityYear()).equals("") || String.valueOf(card.getPrice()).equals("")
+                card.getCardOpportunityYear() == null || card.getPrice() == null
                 || card.getPrice() < 0 || card.getCardOpportunityYear() < 0 || card.getCardOpportunityYear() > 5) {
             throw new CardBadRequestException(card.getId());
         }

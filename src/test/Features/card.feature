@@ -20,16 +20,26 @@ Feature: Kart CRUD işlemleri test özellikleri
     Then Kart başarı ile güncellenir
 
   Scenario: Kart kaydında hata vermelidir.
-    Given "C-1" kartı var iken"
-    When "C-1" kartı başvuran'ı boş post edildiğinde
-    Then Hata verilir
+    Given "C-1" kartı var iken
+    When "C-1" kartının başvuran'ı boş post edildiğinde
+    Then Kart postu hata verir
 
   Scenario: Kart kaydında hata vermelidir.
-    Given "C-1" kartı var iken"
-    When "C-1" kartı şehir-olanak'ı boş post edildiğinde
-    Then Hata verilir
+    Given "C-1" kartı var iken
+    When "C-1" kartının şehir-olanak'ı boş post edildiğinde
+    Then Kart postu hata verir
 
   Scenario: Kart kaydında hata vermelidir.
-    Given "C-1" kartı var iken"
-    When "C-1" kartı şehir-olanak'ı boş post edildiğinde
-    Then Hata verilir
+    Given "C-1" kartı var iken
+    When "C-1" kartının son kullanma tarihi boş post edildiğinde
+    Then Kart postu hata verir
+
+  Scenario: Kart kaydında hata vermelidir.
+    Given "C-1" kartı var iken
+    When "C-1" kartının fiyatı boş post edildiğinde
+    Then Kart postu hata verir
+
+  Scenario: Kart kaydında hata vermelidir.
+    Given "C-1" kartı var iken
+    When "C-1" kartının olanak tanımlanma yılı boş post edildiğinde
+    Then Kart postu hata verir

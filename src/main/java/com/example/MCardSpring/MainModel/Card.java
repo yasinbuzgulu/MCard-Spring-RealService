@@ -22,7 +22,7 @@ public class Card {
      * Kart kaydında kart fiyatı
      */
     @NotNull
-    private int price;
+    private Integer price;
 
     /**
      * Kart kaydında kart son kullanma tarihi
@@ -44,7 +44,7 @@ public class Card {
     /**
      * Kart kaydında seçilen olanakların kaç yıl için tanımlanacağı
      */
-    private int cardOpportunityYear;
+    private Integer cardOpportunityYear;
 
     public Card() {
     }
@@ -66,11 +66,11 @@ public class Card {
         this.id = id;
     }
 
-    public int getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 
@@ -98,11 +98,11 @@ public class Card {
         this.cityOpportunity = cityOpportunity;
     }
 
-    public int getCardOpportunityYear() {
+    public Integer getCardOpportunityYear() {
         return cardOpportunityYear;
     }
 
-    public void setCardOpportunityYear(int cardOpportunityYear) {
+    public void setCardOpportunityYear(Integer cardOpportunityYear) {
         this.cardOpportunityYear = cardOpportunityYear;
     }
 
