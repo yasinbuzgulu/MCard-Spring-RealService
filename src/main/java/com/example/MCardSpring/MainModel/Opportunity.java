@@ -1,6 +1,7 @@
 package com.example.MCardSpring.MainModel;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 /**
@@ -12,6 +13,7 @@ public class Opportunity {
      * Olanak kaydının tutulduğu unique ID
      */
     @Id
+    @GeneratedValue
     private Long id;
 
     /**
@@ -19,25 +21,11 @@ public class Opportunity {
      */
     private String name;
 
-    /**
-     * Olanağın 1 yıl için fiyatı
-     */
-    private int perYearPrice;
-
-    /**
-     * Olanağın tanımlanabileceği max yıl
-     */
-    private int topLimitYearValue;
-
-    public Opportunity(Long id, String name, int perYearPrice, int topLimitYearValue) {
-        this.id = id;
+    public Opportunity( String name) {
         this.name = name;
-        this.perYearPrice = perYearPrice;
-        this.topLimitYearValue = topLimitYearValue;
     }
 
     public Opportunity() {
-
     }
 
     public String getName() {
@@ -46,22 +34,6 @@ public class Opportunity {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getPerYearPrice() {
-        return perYearPrice;
-    }
-
-    public void setPerYearPrice(int perYearPrice) {
-        this.perYearPrice = perYearPrice;
-    }
-
-    public int getTopLimitYearValue() {
-        return topLimitYearValue;
-    }
-
-    public void setTopLimitYearValue(int topLimitYearValue) {
-        this.topLimitYearValue = topLimitYearValue;
     }
 
     public Long getId() {
@@ -77,8 +49,6 @@ public class Opportunity {
         return "Opportunity{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", perYearPrice=" + perYearPrice +
-                ", topLimitYearValue=" + topLimitYearValue +
                 '}';
     }
 }

@@ -1,6 +1,12 @@
 package com.example.MCardSpring.MainModel;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Başvuran kişinin özelliklerini belirten entity
@@ -8,55 +14,57 @@ import javax.persistence.*;
 @Entity
 public class Applicant {
 
+    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "applicant")
+    @JsonIgnore
+    private final List<Card> cards = new ArrayList<>();
     /**
      * Başvuran kişinin kaydının tutulduğu unique ID
      */
     @Id
     @GeneratedValue
     private Long id;
-
     /**
      * Başvuran kişinin kaydında başvuranın ismi
      */
+    @NotBlank
     private String name;
-
     /**
      * Başvuran kişinin kaydında başvuranın soyismi
      */
+    @NotBlank
     private String surname;
-
     /**
      * Başvuran kişinin kaydında başvuranın doğum tarihi
      */
+    @NotNull
     private String birthDate;
-
     /**
      * Başvuran kişinin kaydında başvuranın kimlik numarası
      */
+    @NotNull
     private long citizenNumber;
-
     /**
      * Başvuran kişinin kaydında başvuranın yaşına göre tipi (çocuk/normal/yaşlı)
      */
+    @NotNull
     private String typeBasedOnAge;
-
     /**
      * Başvuran kişinin kaydında başvuranın eğitime göre tipi (öğrenci/sivil/ikisi de değil)
      */
+    @NotNull
     private String typeBasedOnEducation;
 
     public Applicant() {
     }
 
     public Applicant(String name, String surname, String birthDate,
-                     long citizenNumber, String typeBasedOnAge, String typeBasedOnEducation, Long id) {
+                     long citizenNumber, String typeBasedOnAge, String typeBasedOnEducation) {
         this.name = name;
         this.surname = surname;
         this.birthDate = birthDate;
         this.citizenNumber = citizenNumber;
         this.typeBasedOnAge = typeBasedOnAge;
         this.typeBasedOnEducation = typeBasedOnEducation;
-        this.id = id;
     }
 
     public Long getId() {
@@ -115,9 +123,13 @@ public class Applicant {
         this.typeBasedOnEducation = typeBasedOnEducation;
     }
 
+    public List<Card> getCards() {
+        return cards;
+    }
+
     @Override
     public String toString() {
-        return  "Applicant{" +
+        return "Applicant{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
