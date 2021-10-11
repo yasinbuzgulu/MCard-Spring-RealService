@@ -3,26 +3,31 @@ package com.example.MCardSpring.Repository;
 import com.example.MCardSpring.MainModel.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Default bilgiilerin @Config ve @Bean ile yüklendiği sınıf
  */
 @Configuration
 public class LoadDatabase {
-
     private static final Logger log = LoggerFactory.getLogger(LoadDatabase.class);
+    @Autowired
+    PasswordEncoder encoder;
 
     @Bean
     CommandLineRunner initDatabase(ApplicantRepository applicantRepository, CityRepository cityRepository,
                                    OpportunityRepository opportunityRepository,
-                                   CityOpportunityRepository cityOpportunityRepository,
-                                   CardRepository cardRepository) {
+                                   CityOpportunityRepository cityOpportunityRepository, CardRepository cardRepository,
+                                   RoleRepository roleRepository, UserRepository userRepository) {
         return args -> {
             Applicant yasinB = new Applicant("Yasin", "Büzgülü",
                     "05/09/1997", 53452312702L, "Normal",
@@ -133,7 +138,6 @@ public class LoadDatabase {
             izmirOpportunityList.add(izmirTheatre);
             izmirOpportunityList.add(izmirMuseum);
 
-
             Card testCard = new Card(250, "09/09/2023", yasinB,
                     bursaOpportunityList, 4);
             testCard = cardRepository.save(testCard);
@@ -142,6 +146,19 @@ public class LoadDatabase {
                     istanbulOpportunityList, 5);
             cardRepository.save(testCard2);
 
+            Set<Role> roles = new HashSet<>();
+            Set<Role> userRoles = new HashSet<>();
+            Role adminRole = new Role(ERole.ROLE_ADMIN);
+            Role userRole = new Role(ERole.ROLE_USER);
+            adminRole = roleRepository.save(adminRole);
+            userRole = roleRepository.save(userRole);
+            roles.add(adminRole);
+            User yasin = new User("yasin", "yb@gmail.com", encoder.encode("mcardYB34"));
+            User murat = new User("hasan", "murat@gmail.com", encoder.encode("hasder"));
+            yasin.setRoles(roles);
+            murat.setRoles(userRoles);
+            userRepository.save(yasin);
+            userRepository.save(murat);
         };
 
     }

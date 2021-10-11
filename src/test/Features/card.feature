@@ -1,5 +1,9 @@
 Feature: Kart CRUD işlemleri test özellikleri
 
+  Background:
+    Given "U-1" kullanıcısı kart kaydı için kayıtlı iken
+    And "U-1" kullanıcısı ile kart kaydı için giriş yapılı iken
+
   Scenario: Bir kart başarıyla kaydedilmelidir.
     Given "C-1" kartı var iken
     When  "C-1" kartı post edildiğinde

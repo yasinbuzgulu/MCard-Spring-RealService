@@ -1,5 +1,10 @@
 Feature: Başvuran CRUD işlemleri test özellikleri
 
+  Background:
+    Given "U-1" kullanıcısı kayıtlı iken
+    And "U-1" kullanıcısı ile giriş yapılı iken
+
+
   Scenario: Bir başvuran başarıyla kaydedilmelidir.
     Given Başvuranın tüm bilgileri var iken
     When  Bu bilgiler post edildiğinde

@@ -1,6 +1,5 @@
 package com.example.MCardSpring.Service;
 
-import com.example.MCardSpring.Exception.ApplicantBadRequestException;
 import com.example.MCardSpring.Exception.CardBadRequestException;
 import com.example.MCardSpring.Exception.CardNotFoundException;
 import com.example.MCardSpring.MainModel.Card;
@@ -10,8 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * CRUD işlemlerini yapan servis sınıfım
@@ -22,7 +19,7 @@ public class CardService {
     /**
      * Service içinde kullanılacak applicant repository için instance oluşturmadan constructor ile çağrılır
      */
-    private final CardRepository cardRepository;
+    CardRepository cardRepository;
 
     public CardService(CardRepository cardRepository) {
         this.cardRepository = cardRepository;
@@ -96,13 +93,13 @@ public class CardService {
                 || card.getPrice() < 0 || card.getCardOpportunityYear() < 0 || card.getCardOpportunityYear() > 5) {
             throw new CardBadRequestException(card.getId());
         }
-
-        String regexDate = "^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[1,3-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|(?:(?:1[6-9]|[2-9]\\d)?\\d{2})(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\5(?:0?[1-9]|1\\d|2[0-8])$|^(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00)))(\\/|-|\\.)0?2\\6(29)$|^(?:(?:1[6-9]|[2-9]\\d)?\\d{2})(?:(?:(\\/|-|\\.)(?:0?[1,3-9]|1[0-2])\\8(?:29|30))|(?:(\\/|-|\\.)(?:0?[13578]|1[02])\\9(?:31)))$\n";
-        Pattern patternDate = Pattern.compile(regexDate);
-        Matcher matcherDate = patternDate.matcher(card.getExpiryDate());
-        if (!matcherDate.matches() ) {
-            throw new ApplicantBadRequestException(card.getId());
-        }
+        // Sadece dd/mm/yyyy olan son kullanma tarihi için regex kontrolü
+//        String regexDate = "^([0-3]?[0-9])/([0-3]?[0-9])/((?:[0-9]{2})?[0-9]{2})$";
+//        Pattern patternDate = Pattern.compile(regexDate);
+//        Matcher matcherDate = patternDate.matcher(card.getExpiryDate());
+//        if (!matcherDate.matches() ) {
+//            throw new ApplicantBadRequestException(card.getId());
+//        }
 
     }
 
