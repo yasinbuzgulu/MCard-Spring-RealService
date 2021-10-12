@@ -1,6 +1,6 @@
 package com.example.MCardSpring.Security.Jwt;
 
-import com.example.MCardSpring.Security.Services.UserDetailsServiceImpl;
+import com.example.MCardSpring.Service.Services.UserDetailsServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

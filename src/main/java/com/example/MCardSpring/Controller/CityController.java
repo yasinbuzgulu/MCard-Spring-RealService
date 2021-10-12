@@ -12,7 +12,6 @@ import java.util.List;
 
 public class CityController {
 
-
     /**
      * Controller içinde kullanılacak city serivisi instance oluşturmadan constructor ile çağrılır (inject edilir)
      */

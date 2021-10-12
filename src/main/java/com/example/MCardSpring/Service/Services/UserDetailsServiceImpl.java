@@ -1,4 +1,4 @@
-package com.example.MCardSpring.Security.Services;
+package com.example.MCardSpring.Service.Services;
 
 import com.example.MCardSpring.MainModel.User;
 import com.example.MCardSpring.Repository.UserRepository;

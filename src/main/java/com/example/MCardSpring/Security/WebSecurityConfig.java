@@ -2,7 +2,7 @@ package com.example.MCardSpring.Security;
 
 import com.example.MCardSpring.Security.Jwt.AuthEntryPointJwt;
 import com.example.MCardSpring.Security.Jwt.AuthTokenFilter;
-import com.example.MCardSpring.Security.Services.UserDetailsServiceImpl;
+import com.example.MCardSpring.Service.Services.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

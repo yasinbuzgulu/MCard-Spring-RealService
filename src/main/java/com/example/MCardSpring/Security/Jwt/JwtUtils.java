@@ -1,6 +1,6 @@
 package com.example.MCardSpring.Security.Jwt;
 
-import com.example.MCardSpring.Security.Services.UserDetailsImpl;
+import com.example.MCardSpring.Service.Services.UserDetailsImpl;
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

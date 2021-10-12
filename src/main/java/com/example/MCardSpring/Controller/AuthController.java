@@ -10,7 +10,7 @@ import com.example.MCardSpring.Payload.Response.MessageResponse;
 import com.example.MCardSpring.Repository.RoleRepository;
 import com.example.MCardSpring.Repository.UserRepository;
 import com.example.MCardSpring.Security.Jwt.JwtUtils;
-import com.example.MCardSpring.Security.Services.UserDetailsImpl;
+import com.example.MCardSpring.Service.Services.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;

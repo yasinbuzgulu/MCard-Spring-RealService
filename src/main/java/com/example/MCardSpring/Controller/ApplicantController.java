@@ -7,6 +7,7 @@ import com.example.MCardSpring.Service.ApplicantService;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
@@ -35,6 +36,7 @@ public class ApplicantController {
      * @return: applicants (kayıtlı tüm başvuranlar)
      */
     @GetMapping("/applicants")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<List<Applicant>> listApplicants() {
         List<Applicant> applicants = applicantService.listApplicants();
         return ResponseEntity.ok().body(applicants);
@@ -47,6 +49,7 @@ public class ApplicantController {
      * @return : URI da girilen id değerine sahip başvuranyı döndürür
      */
     @GetMapping("/applicants/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Applicant> getApplicantById(@PathVariable Long id) {
         Applicant applicant = applicantService.getApplicantById(id);
         return new ResponseEntity<>(applicant, HttpStatus.OK);
@@ -74,6 +77,7 @@ public class ApplicantController {
      * @return : girilen id ye sahip başvurannın güncellemesini döndürür
      */
     @PutMapping("/applicants/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Applicant> updateApplicant(@RequestBody Applicant applicant, @PathVariable("id") Long id) throws ParseException {
         applicantService.updateApplicant(applicant, id);
         return new ResponseEntity<>(applicantService.getApplicantById(id), HttpStatus.OK);
@@ -84,9 +88,9 @@ public class ApplicantController {
      * @return: status u 204 döner ("No Content")
      */
     @DeleteMapping("/applicants/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Applicant> deleteApplicant(@PathVariable("id") Long id) {
         applicantService.deleteApplicant(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-
 }
