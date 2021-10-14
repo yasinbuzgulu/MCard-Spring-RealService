@@ -4,11 +4,13 @@ import com.example.MCardSpring.Exception.CityNotFoundException;
 import com.example.MCardSpring.MainModel.City;
 import com.example.MCardSpring.Repository.CityRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Transactional
 public class CityService {
     CityRepository cityRepository;
 
@@ -25,11 +27,6 @@ public class CityService {
         cityRepository.deleteById(id);
     }
 
-    public City getCity(Long id) {
-        return cityRepository.findById(id)
-                .orElseThrow(() -> new CityNotFoundException(id));
-    }
-
     public City getCityById(Long id) {
         return cityRepository.findById(id)
                 .orElseThrow(() -> new CityNotFoundException(id));
@@ -37,8 +34,8 @@ public class CityService {
 
     public void updateCity(City newCity, Long id) {
         City city = cityRepository.findById(id).get();
-        System.out.println(city.toString());
         city.setCityName(newCity.getCityName());
+        cityRepository.save(city);
     }
 
     public List<City> listCities() {

@@ -153,11 +153,14 @@ public class LoadDatabase {
             adminRole = roleRepository.save(adminRole);
             userRole = roleRepository.save(userRole);
             roles.add(adminRole);
-            User yasin = new User("yasin", "yb@gmail.com", encoder.encode("mcardYB34"));
-            User murat = new User("hasan", "murat@gmail.com", encoder.encode("hasder"));
+            User yasin = new User("admin", "admin@admin.com", encoder.encode("admin24"));
+            User admin = new User("admin2", "admin2@admin.com", encoder.encode("admin24"));
+            User murat = new User("hasan", "hasan@gmail.com", encoder.encode("hasder"));
             yasin.setRoles(roles);
+            admin.setRoles(roles);
             murat.setRoles(userRoles);
             userRepository.save(yasin);
+            userRepository.save(admin);
             userRepository.save(murat);
         };
 

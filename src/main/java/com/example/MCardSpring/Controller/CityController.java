@@ -1,26 +1,25 @@
 package com.example.MCardSpring.Controller;
 
 import com.example.MCardSpring.MainModel.City;
-import com.example.MCardSpring.Repository.CityRepository;
 import com.example.MCardSpring.Service.CityService;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RestController
 public class CityController {
 
     /**
      * Controller içinde kullanılacak city serivisi instance oluşturmadan constructor ile çağrılır (inject edilir)
      */
     CityService cityService;
-    CityRepository cityRepository;
 
-    public CityController(CityService cityService, CityRepository cityRepository) {
+    public CityController(CityService cityService) {
         this.cityService = cityService;
-        this.cityRepository = cityRepository;
     }
 
     /**
@@ -53,6 +52,7 @@ public class CityController {
      * @return : newVity(yeni kaydedilen city)
      */
     @PostMapping("/cities")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<City> createCity(@RequestBody City city) {
         city = cityService.createCity(city);
         HttpHeaders httpHeaders = new HttpHeaders();
@@ -68,6 +68,7 @@ public class CityController {
      * @return : girilen id ye sahip şehrin güncellemesini döndürür
      */
     @PutMapping("/cities/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<City> updateCity(@RequestBody City city, @PathVariable("id") Long id) {
         cityService.updateCity(city, id);
         return new ResponseEntity<>(cityService.getCityById(id), HttpStatus.OK);
@@ -78,8 +79,11 @@ public class CityController {
      * @return: status u 204 döner ("No Content")
      */
     @DeleteMapping("/cities/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<City> deleteCity(@PathVariable("id") Long id) {
         cityService.deleteCity(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+
+
     }
 }

@@ -4,6 +4,7 @@ import com.example.MCardSpring.Exception.CityOpportunityNotFoundException;
 import com.example.MCardSpring.MainModel.CityOpportunity;
 import com.example.MCardSpring.Repository.CityOpportunityRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
  * CRUD işlemlerini yapan servis sınıfım
  */
 @Service
+@Transactional
 public class CityOpportunityService {
     /**
      * Service içinde kullanılacak cityOpportunity repository için instance oluşturmadan constructor ile çağrılır

@@ -3,6 +3,7 @@ package com.example.MCardSpring.MainModel;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 
 /**
  * Şehir nesnesinin özelliklerini belirten entity
@@ -19,6 +20,7 @@ public class City {
     /**
      * Şehrin ismi
      */
+    @NotBlank
     private String cityName;
 
     public City(String cityName) {

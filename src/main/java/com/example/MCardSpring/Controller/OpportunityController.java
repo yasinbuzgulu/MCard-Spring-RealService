@@ -1,7 +1,6 @@
 package com.example.MCardSpring.Controller;
 
 import com.example.MCardSpring.MainModel.Opportunity;
-import com.example.MCardSpring.Repository.OpportunityRepository;
 import com.example.MCardSpring.Service.OpportunityService;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

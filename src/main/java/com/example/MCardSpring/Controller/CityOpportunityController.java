@@ -57,7 +57,7 @@ public class CityOpportunityController {
      * @param cityOpportunity: oluşturulacak yeni şehir-olanak kaydu
      * @return: yeni şehir-olanak kayıt edilmiş status u 201 "CREATED" döner
      */
-    @PostMapping("city-opportunities/")
+    @PostMapping("city-opportunities")
     public ResponseEntity<CityOpportunity> createCityOpportunity(@RequestBody CityOpportunity cityOpportunity) {
         cityOpportunity = cityOpportunityService.createCityOpportunity(cityOpportunity);
         HttpHeaders httpHeaders = new HttpHeaders();

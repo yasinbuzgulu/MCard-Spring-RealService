@@ -5,6 +5,7 @@ import com.example.MCardSpring.Exception.ApplicantNotFoundException;
 import com.example.MCardSpring.MainModel.Applicant;
 import com.example.MCardSpring.Repository.ApplicantRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -19,6 +20,7 @@ import java.util.regex.Pattern;
  * CRUD işlemlerini yapan servis sınıfım
  */
 @Service
+@Transactional
 public class ApplicantService {
     /**
      * Service içinde kullanılacak applicant repository için instance oluşturmadan constructor ile çağrılır
