@@ -1,15 +1,26 @@
 package com.example.MCardSpring.MainModel;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Şehir nesnesinin özelliklerini belirten entity
  */
 @Entity
 public class City {
+
+    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "city")
+    @JsonIgnore
+    private final List<CityOpportunity> cityOpportunities = new ArrayList<>();
+
+    public List<CityOpportunity> getCityOpportunities() {
+        return cityOpportunities;
+    }
+
     /**
      * Şehir nesnesinin unique id si
      */

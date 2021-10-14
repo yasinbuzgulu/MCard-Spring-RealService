@@ -1,14 +1,20 @@
 package com.example.MCardSpring.MainModel;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Olanak nesnesinin özelliklerini belirten entity
  */
 @Entity
 public class Opportunity {
+
+    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "opportunity")
+    @JsonIgnore
+    private final List<CityOpportunity> cityOpportunities = new ArrayList<>();
     /**
      * Olanak kaydının tutulduğu unique ID
      */
@@ -43,6 +49,11 @@ public class Opportunity {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public List<CityOpportunity> getCityOpportunities() {
+        return cityOpportunities;
+    }
+
 
     @Override
     public String toString() {

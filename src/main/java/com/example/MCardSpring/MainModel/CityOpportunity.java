@@ -1,6 +1,10 @@
 package com.example.MCardSpring.MainModel;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Şehir-olanak nesnesinin özelliklerini belirten entity
@@ -8,6 +12,9 @@ import javax.persistence.*;
 @Entity
 public class CityOpportunity {
 
+    @ManyToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "cityOpportunity")
+    @JsonIgnore
+    private final List<Card> cards = new ArrayList<>();
     /**
      * Şehir - Olanak kaydının tutulduğu unique ID
      */
@@ -86,6 +93,9 @@ public class CityOpportunity {
 //    public void setTopLimitYearValue(int topLimitYearValue) {
 //        this.topLimitYearValue = topLimitYearValue;
 //    }
+public List<Card> getCards() {
+    return cards;
+}
 
     @Override
     public String toString() {
