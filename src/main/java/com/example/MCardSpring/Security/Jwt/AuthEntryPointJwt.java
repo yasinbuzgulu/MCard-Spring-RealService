@@ -12,6 +12,9 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
 
+/**
+ * Authtication için jwt kontrolü sonrası mesaj sınıfı
+ */
 @Component
 public class AuthEntryPointJwt implements AuthenticationEntryPoint {
 

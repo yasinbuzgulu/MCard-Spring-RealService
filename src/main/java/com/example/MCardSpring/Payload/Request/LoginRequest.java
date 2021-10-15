@@ -2,10 +2,19 @@ package com.example.MCardSpring.Payload.Request;
 
 import javax.validation.constraints.NotBlank;
 
+/**
+ * Giriş istek verilerinin tutulduğu sınıfı
+ */
 public class LoginRequest {
+    /**
+     * Giriş isteği içindeki kullanıcı ismi
+     */
     @NotBlank
     private String username;
 
+    /**
+     * Giriş isteği içindeki kullanıcı şifresi
+     */
     @NotBlank
     private String password;
 

@@ -7,25 +7,43 @@ import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Giriş için kulanılan kullanıcı entity si
+ */
 @Entity
 public class User {
+    /**
+     * Kullanıcının uqiue id si
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    /**
+     * Kullanıcı ismi
+     */
     @NotBlank
     @Size(max = 20)
     private String username;
 
+    /**
+     * Kullanıcı e-maili
+     */
     @NotBlank
     @Size(max = 50)
     @Email
     private String email;
 
+    /**
+     * Kullanıcı şifresi
+     */
     @NotBlank
     @Size(max = 120)
     private String password;
 
+    /**
+     * Kullanıcı şifresi
+     */
     @ManyToMany(fetch = FetchType.LAZY)
     private Set<Role> roles = new HashSet<>();
 

@@ -7,6 +7,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
+/**
+ * Rol bilgilerinin tutulduğu repository
+ */
 @Repository
 public interface RoleRepository extends JpaRepository<Role, Long> {
     Optional<Role> findByName(ERole name);

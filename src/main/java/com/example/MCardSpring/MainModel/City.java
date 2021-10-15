@@ -13,6 +13,10 @@ import java.util.List;
 @Entity
 public class City {
 
+    /**
+     * City ile CityOpportunity arası entity relation var ve bu ilişkinin city deki değişiklerinden -
+     * CityOpportunity ninde etkilenmesi için olan kısmı
+     */
     @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "city")
     @JsonIgnore
     private final List<CityOpportunity> cityOpportunities = new ArrayList<>();

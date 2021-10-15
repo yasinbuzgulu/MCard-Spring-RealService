@@ -27,6 +27,9 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+/**
+ * Authantication işlemlerini(signin-signup) kontrol eden sınıf
+ */
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
@@ -46,9 +49,15 @@ public class AuthController {
     @Autowired
     JwtUtils jwtUtils;
 
+    /**
+     * Signin uri yı üzerinden gelen login isteğinin yapıldığı method
+     *
+     * @param loginRequest: Giriş yapmak isteyen kullanıcı bilgilerini içeren istek
+     * @return: Validasyon sonrası istek içindeki bilgilere ek jwt ile beraber döner
+     */
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
-
+        // Girilen kullanıcı ismi ve şifresine token atama için (tam bir authantication nesnesi için) yapılan işlem
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 
@@ -67,21 +76,28 @@ public class AuthController {
                 roles));
     }
 
+    /**
+     * Kulllanıcı kaydının yapıldığı method
+     *
+     * @param signUpRequest: Forma girilen bilgileri içeren kayıt isteği
+     * @return: İstek içindeki bilgilerin kontrolü sonrası başarılı kayıt mesajı döner
+     */
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
+        //  Kullanıcı adı daha önce kullanılmış mı kontrolü
         if (userRepository.existsByUsername(signUpRequest.getUsername())) {
             return ResponseEntity
                     .badRequest()
                     .body(new MessageResponse("Error: Username is already taken!"));
         }
-
+        //   Kullanıcı emaili daha önce kullanılmış mı kontrolü
         if (userRepository.existsByEmail(signUpRequest.getEmail())) {
             return ResponseEntity
                     .badRequest()
                     .body(new MessageResponse("Error: Email is already in use!"));
         }
 
-        // Create new user's account
+        //Yeni kullanıcı oluşturulur
         User user = new User(signUpRequest.getUsername(),
                 signUpRequest.getEmail(),
                 encoder.encode(signUpRequest.getPassword()));
@@ -89,6 +105,7 @@ public class AuthController {
         Set<String> strRoles = signUpRequest.getRole();
         Set<Role> roles = new HashSet<>();
 
+        //  Rol atama işlemi
         if (strRoles == null) {
             Role userRole = roleRepository.findByName(ERole.ROLE_USER)
                     .orElseThrow(() -> new RuntimeException("Error: Role is not found."));

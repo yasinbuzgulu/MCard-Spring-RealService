@@ -14,6 +14,10 @@ import java.util.List;
 @Entity
 public class Applicant {
 
+    /**
+     * Applicant ile card arası entity relation var ve bu ilişkinin applicant taki değişiklerinden kartın da -
+     * etkilenmesi için olan kısmı
+     */
     @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "applicant")
     @JsonIgnore
     private final List<Card> cards = new ArrayList<>();

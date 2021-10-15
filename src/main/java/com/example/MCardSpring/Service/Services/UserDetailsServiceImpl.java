@@ -10,6 +10,9 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 
+/**
+ * UsertDetsils sınıfının verilerinin yönetimine yardım eden servis
+ */
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired

@@ -5,18 +5,33 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.Set;
 
+/**
+ * Yeni kullanıcı oluşturma isteğinin veri sınıfı
+ */
 public class SignupRequest {
+    /**
+     * Yeni kullanıcının kullanıcı ismi
+     */
     @NotBlank
     @Size(min = 3, max = 20)
     private String username;
 
+    /**
+     * Yeni kullanıcının kullanıcı e-maili
+     */
     @NotBlank
     @Size(max = 50)
     @Email
     private String email;
 
+    /**
+     * Yeni kullanıcının kullanıcı rolü
+     */
     private Set<String> role;
 
+    /**
+     * Yeni kullanıcının kullanıcı şifresi
+     */
     @NotBlank
     @Size(min = 6, max = 40)
     private String password;

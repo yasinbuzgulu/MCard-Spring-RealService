@@ -1,7 +1,5 @@
 package com.example.MCardSpring.Controller;
 
-import com.example.MCardSpring.Exception.CityOpportunityNotFoundException;
-import com.example.MCardSpring.MainModel.Applicant;
 import com.example.MCardSpring.MainModel.CityOpportunity;
 import com.example.MCardSpring.Repository.CityOpportunityRepository;
 import com.example.MCardSpring.Service.CityOpportunityService;
@@ -49,7 +47,8 @@ public class CityOpportunityController {
     @GetMapping("/city-opportunities/{id}")
     public ResponseEntity<CityOpportunity> getCityOpportunityById(@PathVariable Long id) {
         CityOpportunity cityOpportunity = cityOpportunityService.getCityOpportunityById(id);
-        return new ResponseEntity<>(cityOpportunity, HttpStatus.OK);    }
+        return new ResponseEntity<>(cityOpportunity, HttpStatus.OK);
+    }
 
     /**
      * POST ile yeni bir şehir-olanak kaydı oluşturulur

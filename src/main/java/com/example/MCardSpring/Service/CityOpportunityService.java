@@ -25,7 +25,7 @@ public class CityOpportunityService {
     }
 
     /**
-     * eni şehir-olanak oluşturma metodu
+     * Yeni şehir-olanak oluşturma metodu
      *
      * @param cityOpportunity: yeni şehir-olanak nesnesi
      * @return: repository ye kayıt döner

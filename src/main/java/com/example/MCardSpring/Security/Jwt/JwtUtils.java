@@ -13,6 +13,9 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 import java.util.Optional;
 
+/**
+ * Jwt - token üreten sınıf
+ */
 @Component
 public class JwtUtils {
     private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);

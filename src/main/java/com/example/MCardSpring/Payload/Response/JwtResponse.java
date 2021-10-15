@@ -6,22 +6,43 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Kullanıcı girişinde ve işlemlerininde kullanılacak unique token ı ve kullanıcı bilgilerinin sınıfı
+ */
 public class JwtResponse implements Serializable {
+    /**
+     * Kayıtlı kullanıcıya verilen token
+     */
     @JsonProperty("corporationId")
     private String token;
 
+    /**
+     * Token verisinin prefix'i
+     */
     @JsonProperty("type")
     private String type = "Bearer";
 
+    /**
+     * Kullanıcı id si
+     */
     @JsonProperty("id")
     private Long id;
 
+    /**
+     * Kullanıcı ismi
+     */
     @JsonProperty("username")
     private String username;
 
+    /**
+     * Kullanıcı e-maili
+     */
     @JsonProperty("email")
     private String email;
 
+    /**
+     * Kullanıcı rolü/leri
+     */
     @JsonProperty("roles")
     private List<String> roles;
 

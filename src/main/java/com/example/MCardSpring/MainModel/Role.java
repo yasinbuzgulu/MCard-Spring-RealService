@@ -2,12 +2,21 @@ package com.example.MCardSpring.MainModel;
 
 import javax.persistence.*;
 
+/**
+ * Kullanıcı içinde kullanılan Role entity si
+ */
 @Entity
 public class Role {
+    /**
+     * User rolünün unique id si
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    /**
+     * User rolünün ERole den belirlenmesi
+     */
     @Enumerated(EnumType.STRING)
     private ERole name;
 

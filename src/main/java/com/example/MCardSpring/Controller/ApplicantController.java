@@ -3,7 +3,6 @@ package com.example.MCardSpring.Controller;
 import com.example.MCardSpring.MainModel.Applicant;
 import com.example.MCardSpring.Repository.ApplicantRepository;
 import com.example.MCardSpring.Service.ApplicantService;
-
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +21,7 @@ public class ApplicantController {
     /**
      * Controller içinde kullanılacak applicant serivisi instance oluşturmadan constructor ile çağrılır
      */
-        ApplicantService applicantService;
+    ApplicantService applicantService;
     ApplicantRepository applicantRepository;
 
     public ApplicantController(ApplicantService applicantService, ApplicantRepository applicantRepository) {

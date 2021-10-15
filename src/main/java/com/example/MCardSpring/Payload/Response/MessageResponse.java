@@ -1,5 +1,8 @@
 package com.example.MCardSpring.Payload.Response;
 
+/**
+ * Mesaj dönme sınıfı
+ */
 public class MessageResponse {
     private String message;
 
