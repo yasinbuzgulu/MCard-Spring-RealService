@@ -154,7 +154,7 @@ public class LoadDatabase {
             adanaOpportunityList.add(adanaParking);
             adanaOpportunityList.add(adanaLibrary);
 
-            // İstanbul şehir-olanaklarından istenenlerin bir listeye eklenmesi
+            // bursa şehir-olanaklarından istenenlerin bir listeye eklenmesi
             List<CityOpportunity> bursaOpportunityList = new ArrayList<>();
             bursaOpportunityList.add(bursaTheatre);
             bursaOpportunityList.add(bursaLibrary);
