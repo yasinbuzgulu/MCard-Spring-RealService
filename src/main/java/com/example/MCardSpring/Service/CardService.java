@@ -1,8 +1,11 @@
 package com.example.MCardSpring.Service;
 
+import com.example.MCardSpring.Exception.CardNotFoundException;
 import com.example.MCardSpring.MainModel.Card;
 import com.example.MCardSpring.Repository.CardRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,11 +13,13 @@ import java.util.List;
  *  CRUD işlemlerini yapan servis sınıfım
  */
 @Service
+@Transactional
 public class CardService {
     /**
      * Service içinde kullanılacak applicant repository için instance oluşturmadan constructor ile çağrılır
      */
     private final CardRepository cardRepository;
+
     public CardService(CardRepository cardRepository) {
         this.cardRepository = cardRepository;
     }
@@ -33,14 +38,18 @@ public class CardService {
      * @param id:  siinecek kart id si
      */
     public void deleteCard(Long id) {
-        cardRepository.deleteById(id);
+        try {
+            cardRepository.deleteById(id);
+        } catch (Exception e) {
+            throw new CardNotFoundException(id);
+        }
     }
 
     /**
      * Tüm kartları listeleyen metot
      * @return: tüm başvuranları repositoryden bulup döner
      */
-    public List<Card> listTheCards() {
+    public List<Card> listCards() {
         return new ArrayList<>(cardRepository.findAll());
     }
 
@@ -50,7 +59,8 @@ public class CardService {
      * @return: girilen id li kartı döner
      */
     public Card getCardById(Long id) {
-        return cardRepository.findById(id).get();
+        return cardRepository.findById(id)
+                .orElseThrow(()-> new CardNotFoundException(id));
     }
 
     /**
@@ -61,7 +71,6 @@ public class CardService {
     public void updateCard(Card newCard, Long id) {
         Card card = cardRepository.findById(id).get();
         System.out.println(card.toString());
-        card.setId(newCard.getId());
         card.setApplicant(newCard.getApplicant());
         card.setCardOpportunityYear(newCard.getCardOpportunityYear());
         card.setCityOpportunity(newCard.getCityOpportunity());
